@@ -1,0 +1,332 @@
+{
+  "formatVersion": 1,
+  "kind": "polyspoon.model-controls",
+  "title": "Stylized fox",
+  "family": "stylized-fox",
+  "familyVersion": "1.1.0",
+  "recipeVersion": "1.1.0",
+  "units": {
+    "length": "m",
+    "up": "+Y",
+    "handedness": "right"
+  },
+  "parameters": [
+    {
+      "key": "bodyLength",
+      "label": "Body length",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.35,
+      "max": 0.75,
+      "step": 0.005,
+      "default": 0.44,
+      "hint": "Body length",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "m",
+      "inputUnit": "m",
+      "displayUnit": "m",
+      "value": 0.44
+    },
+    {
+      "key": "heightRatio",
+      "label": "Shoulder height",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.6,
+      "max": 0.8,
+      "step": 0.005,
+      "default": 0.8,
+      "hint": "Shoulder height",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.8
+    },
+    {
+      "key": "chestRatio",
+      "label": "Chest width",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.25,
+      "max": 0.38,
+      "step": 0.005,
+      "default": 0.34,
+      "hint": "Chest width",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.34
+    },
+    {
+      "key": "headRatio",
+      "label": "Head length",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.26,
+      "max": 0.38,
+      "step": 0.005,
+      "default": 0.36,
+      "hint": "Head length",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.36
+    },
+    {
+      "key": "earRatio",
+      "label": "Ear height",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.35,
+      "max": 0.6,
+      "step": 0.005,
+      "default": 0.48,
+      "hint": "Ear height",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.48
+    },
+    {
+      "key": "muzzleRatio",
+      "label": "Muzzle length",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.35,
+      "max": 0.55,
+      "step": 0.005,
+      "default": 0.45,
+      "hint": "Muzzle length",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.45
+    },
+    {
+      "key": "tailRatio",
+      "label": "Tail length",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.8,
+      "max": 1.2,
+      "step": 0.005,
+      "default": 1.05,
+      "hint": "Tail length",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 1.05
+    },
+    {
+      "key": "tailFullness",
+      "label": "Tail fullness",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.1,
+      "max": 0.18,
+      "step": 0.005,
+      "default": 0.16,
+      "hint": "Tail fullness",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "body",
+        "skeleton"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.16
+    },
+    {
+      "key": "color.fur",
+      "label": "fur",
+      "kind": "color",
+      "group": "colors",
+      "default": "#b95b32",
+      "role": "fur",
+      "hint": "fur material",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "fur"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#b95b32"
+    },
+    {
+      "key": "color.cream",
+      "label": "cream",
+      "kind": "color",
+      "group": "colors",
+      "default": "#eadbc4",
+      "role": "cream",
+      "hint": "cream material",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "cream"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#eadbc4"
+    },
+    {
+      "key": "color.dark",
+      "label": "dark",
+      "kind": "color",
+      "group": "colors",
+      "default": "#332c2a",
+      "role": "dark",
+      "hint": "dark material",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "dark"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#332c2a"
+    }
+  ],
+  "applied": {
+    "bodyLength": 0.44,
+    "heightRatio": 0.8,
+    "chestRatio": 0.34,
+    "headRatio": 0.36,
+    "earRatio": 0.48,
+    "muzzleRatio": 0.45,
+    "tailRatio": 1.05,
+    "tailFullness": 0.16,
+    "color.fur": "#b95b32",
+    "color.cream": "#eadbc4",
+    "color.dark": "#332c2a"
+  },
+  "appearance": null,
+  "presets": [
+    {
+      "id": "default",
+      "name": "Russet fox",
+      "description": "Russet coat with cream underside, dark socks and ear tips.",
+      "parameters": {}
+    },
+    {
+      "id": "silver",
+      "name": "Silver fox",
+      "description": "Charcoal-grey coat with a white tail tip.",
+      "parameters": {
+        "color.fur": "#5d5a5c",
+        "color.cream": "#e9e7e3",
+        "color.dark": "#1f1d1e"
+      }
+    },
+    {
+      "id": "arctic",
+      "name": "Arctic fox",
+      "description": "White winter coat with small ears and a full tail.",
+      "parameters": {
+        "color.fur": "#ecebe6",
+        "color.cream": "#ffffff",
+        "color.dark": "#a49d96",
+        "earRatio": 0.38,
+        "muzzleRatio": 0.38,
+        "tailFullness": 0.18
+      }
+    }
+  ],
+  "palettes": [],
+  "materials": [
+    {
+      "name": "fur",
+      "baseColor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "hex": "#ffffff",
+      "metallic": 0,
+      "roughness": 0.9
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.08535125851631165,
+      -2.710505431213761e-20,
+      -0.6597737073898315
+    ],
+    "max": [
+      0.08443493396043777,
+      0.5091447234153748,
+      0.43690866231918335
+    ],
+    "dimensions": [
+      0.16978619247674942,
+      0.5091447234153748,
+      1.096682369709015
+    ]
+  },
+  "formats": [
+    "glb",
+    "obj",
+    "fbx",
+    "usdz"
+  ],
+  "note": "Change parameters in the Polyspoon editor or with the agent toolkit, then export again; downloaded meshes are static snapshots."
+}

@@ -207,3 +207,64 @@ def grass_tex(seed=4, W=512, Hh=512):
 
 
 save(bleed(grass_tex()), 'f_blades', 84)
+
+
+# ---------- racimos de hojas dibujados: arce japonés, ginkgo y sauce ----------
+def leaf_shape(kind, R, rot):
+    """Polígono de una hoja centrada en (0,0) apuntando hacia arriba, girada «rot»."""
+    pts = []
+    if kind == 'maple':  # hoja palmeada de 7 lóbulos
+        for t in range(140):
+            u = t / 140 * math.tau
+            lobes = abs(math.cos(u * 3.5)) ** .6
+            r = R * (.38 + .62 * lobes) * (1 - .25 * max(0, -math.sin(u)))
+            pts.append((math.sin(u) * r, -math.cos(u) * r))
+    elif kind == 'ginkgo':  # abanico con muesca central
+        for t in range(60):
+            u = -1.05 + 2.1 * t / 59
+            notch = 1 - .22 * math.exp(-(u / .12) ** 2)
+            pts.append((math.sin(u) * R * notch, -math.cos(u) * R * notch))
+        pts.append((R * .06, R * .1)); pts.append((-R * .06, R * .1))
+    else:  # hoja lanceolada (sauce)
+        for t in range(40):
+            u = t / 39 * math.tau
+            pts.append((math.sin(u) * R * .18, -math.cos(u) * R))
+    c, s_ = math.cos(rot), math.sin(rot)
+    return [(x * c - y * s_, x * s_ + y * c) for x, y in pts]
+
+
+def leaf_cluster(kind, cols, seed, S=1024, n=150):
+    rnd = random.Random(seed); im = Image.new('RGBA', (S, S), (0, 0, 0, 0)); dr = ImageDraw.Draw(im)
+    cx = cy = S / 2
+    for i in range(n):
+        r = (rnd.random() ** .7) * .42 * S; a = rnd.uniform(0, math.tau)
+        x, y = cx + math.cos(a) * r, cy + math.sin(a) * r
+        R = S * rnd.uniform(.045, .07) * (1.1 - r / S)
+        col = cols[rnd.randrange(len(cols))]; sh = rnd.uniform(.72, 1.08) * (.8 + .25 * (i / n))
+        fill = tuple(min(255, int(c * sh)) for c in col) + (255,)
+        poly = [(x + px, y + py) for px, py in leaf_shape(kind, R, a + math.pi / 2 + rnd.uniform(-.6, .6))]
+        dr.polygon(poly, fill=fill)
+        vein = tuple(min(255, int(c * sh * 1.18)) for c in col) + (255,)
+        dr.line([(x, y), (x + math.cos(a) * R * .8, y + math.sin(a) * R * .8)], fill=vein, width=max(1, S // 400))
+    return im.resize((512, 512), Image.LANCZOS)
+
+
+save(bleed(leaf_cluster('maple', [(214, 58, 38), (232, 92, 40), (190, 40, 46), (244, 132, 52), (160, 32, 40)], 11)), 'f_maple', 86)
+save(bleed(leaf_cluster('ginkgo', [(246, 196, 60), (236, 176, 44), (250, 214, 96), (214, 160, 40)], 12)), 'f_ginkgo', 86)
+
+
+def willow(seed=5, W=256, Hh=1024):
+    rnd = random.Random(seed); S = 2; im = Image.new('RGBA', (W * S, Hh * S), (0, 0, 0, 0)); dr = ImageDraw.Draw(im)
+    for k in range(9):
+        x0 = rnd.uniform(.15, .85) * W * S; L = rnd.uniform(.7, 1.0) * Hh * S; sway = rnd.uniform(-.08, .08) * W * S
+        dr.line([(x0, 0), (x0 + sway, L)], fill=(92, 104, 52, 255), width=2)
+        for j in range(int(L / (14 * S))):
+            t = j * 14 * S / L; x, y = x0 + sway * t, t * L
+            for sd in (-1, 1):
+                g = rnd.uniform(.8, 1.1); col = (int(120 * g), int(168 * g), int(70 * g), 255)
+                poly = [(x + px, y + py) for px, py in leaf_shape('willow', 13 * S, sd * rnd.uniform(.5, .9) + math.pi)]
+                dr.polygon(poly, fill=col)
+    return im.resize((W, Hh), Image.LANCZOS)
+
+
+save(bleed(willow()), 'f_willow', 86)

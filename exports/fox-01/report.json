@@ -1,0 +1,52 @@
+{
+  "family": "stylized-fox",
+  "version": "1.1.0",
+  "dimensions": [
+    0.16978619247674942,
+    0.5091447234153748,
+    1.096682369709015
+  ],
+  "anchors": {
+    "ground": [
+      0,
+      0,
+      0
+    ],
+    "head": [
+      0,
+      0.40832,
+      0.303292
+    ]
+  },
+  "geometry": {
+    "errors": [],
+    "parts": 1,
+    "triangles": 3106,
+    "vertices": 9318,
+    "bounds": {
+      "min": [
+        -0.08535125851631165,
+        -2.7105053504344044e-20,
+        -0.6597737073898315
+      ],
+      "max": [
+        0.08443493396043777,
+        0.5091447234153748,
+        0.43690866231918335
+      ]
+    }
+  },
+  "glbSha256": "c6bcb5e55d22250be0ee97dbc60b3fe5f67d9f9af1db3c6c58f04b51e40dc3d7",
+  "formats": {},
+  "controls": "asset.controls.json",
+  "toolkit": {
+    "recipe": "bench",
+    "recipeVersion": "1.1.0",
+    "deliveryRevision": 4,
+    "sha256": "da63ef6e143b9c75d64efa2fb0d1ef61e1972a8fe4708c1dae21b1c0097610dd",
+    "sourceHash": "6aa0892764ae32e723fa2f58ae044b051f4de57b22dbab6bb49ce2342412459c"
+  },
+  "limits": [
+    "Geometry/export evidence only; inspect actual views and verify the requested target separately."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "family": "mushroom-cluster",
+  "version": "2.0.0",
+  "dimensions": [
+    0.6943605542182922,
+    0.3499999940395355,
+    0.6080307066440582
+  ],
+  "anchors": {
+    "ground": [
+      0,
+      0,
+      0
+    ],
+    "top": [
+      0,
+      0.3499999940395355,
+      0
+    ]
+  },
+  "geometry": {
+    "errors": [],
+    "parts": 5,
+    "triangles": 2010,
+    "vertices": 6030,
+    "bounds": {
+      "min": [
+        -0.32461410760879517,
+        0,
+        -0.2997434735298157
+      ],
+      "max": [
+        0.36974644660949707,
+        0.3499999940395355,
+        0.30828723311424255
+      ]
+    }
+  },
+  "glbSha256": "e40d25f4599fd2339f577f927908a6db5d95058ba5857265976a9a957b943c48",
+  "formats": {},
+  "controls": "asset.controls.json",
+  "toolkit": {
+    "recipe": "bench",
+    "recipeVersion": "1.1.0",
+    "deliveryRevision": 4,
+    "sha256": "da63ef6e143b9c75d64efa2fb0d1ef61e1972a8fe4708c1dae21b1c0097610dd",
+    "sourceHash": "6aa0892764ae32e723fa2f58ae044b051f4de57b22dbab6bb49ce2342412459c"
+  },
+  "limits": [
+    "Geometry/export evidence only; inspect actual views and verify the requested target separately."
+  ]
+}

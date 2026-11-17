@@ -1,0 +1,447 @@
+{
+  "formatVersion": 1,
+  "kind": "polyspoon.model-controls",
+  "title": "Mushroom cluster",
+  "family": "mushroom-cluster",
+  "familyVersion": "2.0.0",
+  "recipeVersion": "2.0.0",
+  "units": {
+    "length": "m",
+    "up": "+Y",
+    "handedness": "right"
+  },
+  "parameters": [
+    {
+      "key": "count",
+      "label": "Mushrooms",
+      "kind": "integer",
+      "group": "construction",
+      "min": 1,
+      "max": 9,
+      "step": 1,
+      "default": 5,
+      "hint": "Mushrooms in the clump.",
+      "affects": [
+        "topology"
+      ],
+      "targets": [
+        "cap",
+        "stem"
+      ],
+      "unit": "count",
+      "inputUnit": "integer",
+      "displayUnit": "count",
+      "value": 6
+    },
+    {
+      "key": "height",
+      "label": "Tallest",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.1,
+      "max": 2.5,
+      "step": 0.05,
+      "default": 0.35,
+      "hint": "Height of the tallest mushroom.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "cap",
+        "stem"
+      ],
+      "unit": "m",
+      "inputUnit": "m",
+      "displayUnit": "m",
+      "value": 0.35
+    },
+    {
+      "key": "capStyle",
+      "label": "Caps",
+      "kind": "choice",
+      "group": "construction",
+      "default": "dome",
+      "options": [
+        {
+          "value": "dome",
+          "label": "Dome"
+        },
+        {
+          "value": "flat",
+          "label": "Bun"
+        },
+        {
+          "value": "cone",
+          "label": "Cone"
+        }
+      ],
+      "hint": "Cap shape.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "cap"
+      ],
+      "unit": "none",
+      "inputUnit": "none",
+      "displayUnit": "none",
+      "value": "dome"
+    },
+    {
+      "key": "capWidth",
+      "label": "Cap width",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.4,
+      "max": 1.2,
+      "step": 0.05,
+      "default": 0.75,
+      "hint": "Cap width relative to height.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "cap"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.75
+    },
+    {
+      "key": "spots",
+      "label": "Spots",
+      "kind": "toggle",
+      "group": "construction",
+      "default": true,
+      "hint": "Raised spots on the caps.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "spots"
+      ],
+      "unit": "none",
+      "inputUnit": "none",
+      "displayUnit": "none",
+      "value": true
+    },
+    {
+      "key": "lean",
+      "label": "Lean",
+      "kind": "range",
+      "group": "shape",
+      "min": 0,
+      "max": 0.4,
+      "step": 0.01,
+      "default": 0.15,
+      "hint": "How far the outer mushrooms lean out.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "stem"
+      ],
+      "unit": "ratio",
+      "inputUnit": "dimensionless",
+      "displayUnit": "ratio",
+      "value": 0.15
+    },
+    {
+      "key": "seed",
+      "label": "Variation seed",
+      "kind": "integer",
+      "group": "construction",
+      "min": 0,
+      "max": 65535,
+      "step": 1,
+      "default": 7,
+      "hint": "Repeatable layout.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "cap",
+        "stem"
+      ],
+      "unit": "seed",
+      "inputUnit": "integer",
+      "displayUnit": "seed",
+      "value": 7
+    },
+    {
+      "key": "colorway",
+      "label": "Palette",
+      "kind": "choice",
+      "group": "colors",
+      "default": "toadstool",
+      "options": [
+        {
+          "value": "toadstool",
+          "label": "Toadstool"
+        },
+        {
+          "value": "porcini",
+          "label": "Porcini"
+        },
+        {
+          "value": "glow",
+          "label": "Glow"
+        }
+      ],
+      "hint": "Mushroom colors.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "cap",
+        "spots",
+        "stem",
+        "ground"
+      ],
+      "unit": "none",
+      "inputUnit": "none",
+      "displayUnit": "none",
+      "value": "toadstool"
+    },
+    {
+      "key": "color.cap",
+      "label": "Cap",
+      "kind": "color",
+      "group": "colors",
+      "default": "#c8352b",
+      "role": "cap",
+      "hint": "Cap color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "cap"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#c8352b"
+    },
+    {
+      "key": "color.spots",
+      "label": "Spots",
+      "kind": "color",
+      "group": "colors",
+      "default": "#f4efe2",
+      "role": "spots",
+      "hint": "Spot color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "spots"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#f4efe2"
+    },
+    {
+      "key": "color.stem",
+      "label": "Stem",
+      "kind": "color",
+      "group": "colors",
+      "default": "#ece4d0",
+      "role": "stem",
+      "hint": "Stem and gill color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "stem"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#ece4d0"
+    },
+    {
+      "key": "color.ground",
+      "label": "Moss",
+      "kind": "color",
+      "group": "colors",
+      "default": "#4d6b3a",
+      "role": "ground",
+      "hint": "Moss mound color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "ground"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#4d6b3a"
+    }
+  ],
+  "applied": {
+    "count": 6,
+    "height": 0.35,
+    "capStyle": "dome",
+    "capWidth": 0.75,
+    "spots": true,
+    "lean": 0.15,
+    "seed": 7,
+    "colorway": "toadstool",
+    "color.cap": "#c8352b",
+    "color.spots": "#f4efe2",
+    "color.stem": "#ece4d0",
+    "color.ground": "#4d6b3a"
+  },
+  "appearance": null,
+  "presets": [
+    {
+      "id": "toadstool",
+      "name": "Toadstools",
+      "description": "Red spotted toadstools on a moss mound.",
+      "parameters": {}
+    },
+    {
+      "id": "porcini",
+      "name": "Porcini",
+      "description": "Fat-stemmed porcini with brown bun caps.",
+      "parameters": {
+        "colorway": "porcini",
+        "capStyle": "flat",
+        "spots": false,
+        "count": 4,
+        "capWidth": 0.95,
+        "lean": 0.08,
+        "seed": 12
+      }
+    },
+    {
+      "id": "glow",
+      "name": "Giant glowcap",
+      "description": "Tall blue glowcaps with glowing spots.",
+      "parameters": {
+        "colorway": "glow",
+        "capStyle": "cone",
+        "height": 1.9,
+        "count": 5,
+        "capWidth": 0.6,
+        "lean": 0.22,
+        "seed": 31
+      }
+    }
+  ],
+  "palettes": [
+    {
+      "id": "toadstool",
+      "label": "Toadstool",
+      "colors": [
+        "#c8352b",
+        "#ece4d0"
+      ]
+    },
+    {
+      "id": "porcini",
+      "label": "Porcini",
+      "colors": [
+        "#7a4a2a",
+        "#e2d3b0"
+      ]
+    },
+    {
+      "id": "glow",
+      "label": "Glow",
+      "colors": [
+        "#2f6fb3",
+        "#cfe3ea"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "cap",
+      "baseColor": [
+        0.5775804404214573,
+        0.035601314869097636,
+        0.024157632443547246,
+        1
+      ],
+      "hex": "#c8352b",
+      "metallic": 0,
+      "roughness": 0.85
+    },
+    {
+      "name": "spots",
+      "baseColor": [
+        0.9046611743890203,
+        0.8631572134510892,
+        0.76052450467022,
+        1
+      ],
+      "hex": "#f4efe2",
+      "metallic": 0,
+      "roughness": 0.85
+    },
+    {
+      "name": "stem",
+      "baseColor": [
+        0.8387990117372213,
+        0.775822218312646,
+        0.6307571363387763,
+        1
+      ],
+      "hex": "#ece4d0",
+      "metallic": 0,
+      "roughness": 0.85
+    },
+    {
+      "name": "gills",
+      "baseColor": [
+        0.6878151896245214,
+        0.6361742190163696,
+        0.5172208517977965,
+        1
+      ],
+      "hex": "#d8d1be",
+      "metallic": 0,
+      "roughness": 0.85
+    },
+    {
+      "name": "ground",
+      "baseColor": [
+        0.07421356837213867,
+        0.14702726648767014,
+        0.04231141061442144,
+        1
+      ],
+      "hex": "#4d6b3a",
+      "metallic": 0,
+      "roughness": 0.85
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.32461410760879517,
+      0,
+      -0.2997434735298157
+    ],
+    "max": [
+      0.36974644660949707,
+      0.3499999940395355,
+      0.30828723311424255
+    ],
+    "dimensions": [
+      0.6943605542182922,
+      0.3499999940395355,
+      0.6080307066440582
+    ]
+  },
+  "formats": [
+    "glb",
+    "obj",
+    "fbx",
+    "usdz"
+  ],
+  "note": "Change parameters in the Polyspoon editor or with the agent toolkit, then export again; downloaded meshes are static snapshots."
+}

@@ -1,0 +1,52 @@
+{
+  "family": "rigged-rabbit",
+  "version": "1.0.0",
+  "dimensions": [
+    0.20690322137152473,
+    0.35972046852111816,
+    0.3986195503647063
+  ],
+  "anchors": {
+    "ground": [
+      0,
+      0,
+      0
+    ],
+    "head": [
+      0,
+      0.21202216537761787,
+      0.138
+    ]
+  },
+  "geometry": {
+    "errors": [],
+    "parts": 1,
+    "triangles": 2852,
+    "vertices": 8556,
+    "bounds": {
+      "min": [
+        -0.10358059020412735,
+        0,
+        -0.19316622902700642
+      ],
+      "max": [
+        0.10332263116739737,
+        0.35972046852111816,
+        0.2054533213376999
+      ]
+    }
+  },
+  "glbSha256": "b5fc9296fcd0373db9f6b2650381e6466c1807911bb094066825a1e7863e4b56",
+  "formats": {},
+  "controls": "asset.controls.json",
+  "toolkit": {
+    "recipe": "bench",
+    "recipeVersion": "1.1.0",
+    "deliveryRevision": 4,
+    "sha256": "da63ef6e143b9c75d64efa2fb0d1ef61e1972a8fe4708c1dae21b1c0097610dd",
+    "sourceHash": "6aa0892764ae32e723fa2f58ae044b051f4de57b22dbab6bb49ce2342412459c"
+  },
+  "limits": [
+    "Geometry/export evidence only; inspect actual views and verify the requested target separately."
+  ]
+}
