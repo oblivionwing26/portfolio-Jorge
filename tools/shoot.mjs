@@ -43,6 +43,10 @@ for (const a of actions) {
   if (a[0] === 'wait') await page.waitForTimeout(a[1]);
   else if (a[0] === 'eval') { try { const r = await page.evaluate(a[1]); if (r !== undefined) logs.push('eval: ' + JSON.stringify(r)); } catch (e) { logs.push('eval error ' + e.message); } }
   else if (a[0] === 'click') await page.click(a[1]);
+  else if (a[0] === 'down') await page.keyboard.down(a[1]);
+  else if (a[0] === 'up') await page.keyboard.up(a[1]);
+  else if (a[0] === 'press') await page.keyboard.press(a[1], { delay: a[2] || 30 });
+  else if (a[0] === 'mouse') { await page.mouse.move(a[1], a[2]); await page.mouse.down({ button: a[3] || 'left' }); await page.mouse.up({ button: a[3] || 'left' }); }
   else if (a[0] === 'shot') { await page.screenshot({ path: `shots/${out}-${a[1]}.png`, timeout: 300000, animations: 'allow', caret: 'initial' }); logs.push('shot ' + a[1]); }
 }
 console.log(logs.join('\n'));

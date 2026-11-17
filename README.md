@@ -2,9 +2,14 @@
 
 Mundo 3D de un valle japonés de cerezos en flor, renderizado en tiempo real en el navegador con Three.js. Todo el paisaje se genera por código (terreno, río, edificios, vegetación, nubes y luz), sin imágenes ni modelos externos.
 
-Es la base de un juego souls-like: un caballero recorrerá el valle y se enfrentará a jefes en varias arenas.
+Es la base de un juego souls-like: un caballero recorre el valle a pie, habla con sus habitantes, descansa en hogueras y combate contra rōnin huecos camino de las arenas de los jefes.
 
 ![Panorámica del valle](docs/capturas/captura-alta-panoramica.png)
+
+| | |
+|---|---|
+| ![El caballero en la aldea](docs/capturas/captura-caballero.png) | ![Combate contra un rōnin hueco](docs/capturas/captura-combate.png) |
+| ![Puesto de té y arrozales](docs/capturas/captura-arrozales.png) | ![Escalinata en zigzag hacia el palacio](docs/capturas/captura-escalinata.png) |
 
 ## Zonas
 
@@ -14,7 +19,10 @@ Es la base de un juego souls-like: un caballero recorrerá el valle y se enfrent
 - **Bosque de antorchas:** camino con luciérnagas y claro para un jefe.
 - **Torre del Reloj Quebrada (Kronos):** torre gótica con engranajes sobre un acantilado.
 - **Bóveda del Uróboros (Ouro):** caverna de obsidiana con vetas de oro.
-- **Palacio de jade y Torre Celestial:** rampa en espiral hasta la arena celestial y la puerta al cielo, el punto más alto del mapa.
+- **Palacio de jade y Torre Celestial:** escalinata en zigzag con torii hasta el palacio, y rampa en espiral hasta la arena celestial y la puerta al cielo, el punto más alto del mapa.
+- **Arrozales y puesto de té:** entre la aldea y el río, con campesinos, espantapájaros, secadero de arroz y piedras de paso hacia el prado de los ciervos.
+
+Los caminos se tallan en el terreno con pendiente limitada (≈ 20 %): en las laderas aparecen escalones, muros de contención, pretiles, faroles, jizō y torii.
 
 Las coordenadas, conexiones y la API para la fase de juego están en [docs/MAPA.md](docs/MAPA.md).
 
@@ -28,7 +36,27 @@ Para servirlo en local:
 npm start   # http://localhost:5173
 ```
 
-## Controles
+## Cómo se juega
+
+La página arranca con el caballero junto a la hoguera del Nexo. Pulsa **V** (o el botón de la espada) para alternar entre jugar y la cámara libre; los botones de vistas también pasan a cámara libre.
+
+| Acción | Teclado y ratón | Táctil |
+|---|---|---|
+| Moverse | WASD o flechas | Joystick |
+| Correr / rodar | Mantener Mayús / tocar Mayús o Q | 走 / 転 |
+| Saltar | Espacio | 跳 |
+| Atacar / ataque fuerte | Clic / clic derecho (o J / K) | 攻 / 強 |
+| Fijar objetivo | Tab o rueda del ratón (clic) | ◎ |
+| Hablar, descansar, usar | E | 話 |
+| Beber sake (cura) | R | 酒 |
+| Mirar y alejar la cámara | Arrastrar y rueda | Arrastrar |
+
+- **Hogueras:** curan, rellenan el sake, devuelven a los enemigos a su sitio y permiten viajar a cualquier hoguera ya encendida. Hay siete: Nexo, claro del bosque, templo en ruinas, cima de Kronos, puerta del palacio, pie de la Torre Celestial y bóveda de Ouro.
+- **Rōnin huecos:** el enemigo básico. Patrullan los caminos del bosque, la subida a Kronos, las ruinas y la escalinata del palacio. Cargan el tajo con los ojos encendidos: golpearlos durante la carga los interrumpe; rodar en el momento justo te hace invulnerable.
+- **Pétalos de alma:** se ganan al derrotar rōnin. Si caes, se quedan donde caíste hasta que vuelvas a por ellos.
+- **Vida en el valle:** aldeanos con diálogo (abuela, herrero, niños, tendera, pescador, viajeros, campesinos, monje, guardia, ermitaña y peregrina), gatos, gallinas, ciervos y mariposas.
+
+## Cámara libre
 
 | Acción | Control |
 |---|---|
@@ -39,7 +67,7 @@ npm start   # http://localhost:5173
 | Restablecer, ocultar interfaz, captura | R, H, P |
 | Ver colisionadores | C |
 
-La interfaz permite cambiar la atmósfera (amanecer, hora azul, lluvia), la calidad (alta o ligera), activar un recorrido lento de cámara y el sonido ambiental.
+La interfaz permite cambiar la atmósfera (amanecer, hora azul, lluvia), la calidad (alta o ligera), activar un recorrido lento de cámara y el sonido ambiental (también los efectos de combate).
 
 ## Capturas automáticas
 

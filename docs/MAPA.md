@@ -19,10 +19,10 @@ Ejes: +x = este, −z = norte. Unidades ≈ metros. Agua del río a y = 0.
 | Aldea inicial | (−24, 112) | 9 | 7 casas alrededor de la fuente |
 | Templo en ruinas | (−122, −121) | 15 | Árbol gigante en (−112, −152); verja de Ouro detrás del salón en (−122, −167) |
 | Claro del bosque | (134, −32) | 15 | Camino con antorchas desde (35, −63); 6 hitos en desvíos |
-| Torre del Reloj Quebrada (Kronos) | (118, −157) | 12 (y ≈ 112) | Meseta acantilada al noreste; subida en zigzag desde el claro; puente roto al pilar (161, −172) |
+| Torre del Reloj Quebrada (Kronos) | (118, −157) | 12 (y ≈ 66) | Meseta acantilada al noreste; camino de herradura de 213 m (seis tramos, muros y antorchas) desde el claro; puente roto al pilar (161, −172) |
 | Bóveda del Uróboros (Ouro) | (−80, −215) | 10 (y = −32) | Caverna bajo la montaña; entrada desde la verja de las ruinas |
-| Palacio de jade | (−12, −281) | 13 | Cumbre norte sobre un mar de nubes; ascensor de jaula (atajo) en (−45, −289) |
-| **Arena celestial (jefe final)** | (−12, −356) | 24 (y ≈ 226) | Cima de la Torre Celestial, la zona más alta del mapa |
+| Palacio de jade | (−12, −281) | 13 (y ≈ 79) | Cumbre norte sobre un mar de nubes; escalinata en zigzag de 394 m con torii; ascensor de jaula (atajo) en (−45, −289) |
+| **Arena celestial (jefe final)** | (−12, −356) | 24 (y ≈ 201) | Cima de la Torre Celestial, la zona más alta del mapa |
 
 ## Torre Celestial y Arena
 - Inspiración visual: Enir-Ilim (Elden Ring), reinterpretada en clave celestial japonesa; diseño propio, no réplica.
@@ -39,7 +39,16 @@ Ejes: +x = este, −z = norte. Unidades ≈ metros. Agua del río a y = 0.
 - Claro del bosque → zigzag → Kronos.
 - Palacio de jade → rampa en espiral → arena celestial → puerta al cielo.
 
-## Pendiente para la fase de juego
-- El túnel entre la verja de las ruinas y la cueva de Ouro no existe como geometría (teletransporte o transición).
-- Los árboles tienen colisionador cilíndrico; la hierba y las rocas pequeñas no.
-- La rampa en espiral tiene colisionadores por tramos sin cabeceo; conviene suavizar la pendiente al implementar el movimiento.
+## Caminos
+- Cada camino de `paths` se suaviza (Chaikin), se remuestrea cada 1,25 m y recibe un perfil de altura suavizado con pendiente máxima `g` (≈ 0,16–0,26). `H(x, z)` recorta o rellena el terreno hacia ese perfil con taludes proporcionales al desnivel.
+- Los tramos con pendiente > 8,5 % llevan escalones; donde el terreno queda > 1,4 m por encima hay muros de contención y donde cae > 1,6 m, pretiles o vallas.
+- El tramo del puente de vértebras no se talla (`gap`): el perfil se interpola entre los dos estribos.
+- `window.__valle.roads` resume longitud, alturas extremas y pendiente máxima de cada camino.
+
+## Fase de juego
+- **Física:** `groundInfo` combina terreno (o el suelo de la cueva), superficies pisables (`walk`), cilindros bajos y la rampa en espiral (resuelta de forma analítica). Las cajas y cilindros sólidos empujan el cuerpo; no se puede subir una ladera de más de ~46°.
+- **Hogueras** (`window.__valle.game.BONFIRES`): Nexo, claro del bosque (121, −43), templo en ruinas (−111, −104), cima de Kronos (130,5, −149,5), puerta del palacio (−18,5, −261), pie de la Torre Celestial y bóveda de Ouro.
+- **Transiciones:** la verja de las ruinas lleva a la cueva de Ouro (y viceversa) con un fundido; el ascensor del palacio sube y baja entre (−45, −286) y la pasarela superior.
+- **Enemigos:** 13 rōnin huecos en `ENEMY_SPOTS` (camino del bosque, subida a Kronos, ruinas, escalinata del palacio y sendero de la verja).
+- **Habitantes:** aldeanos con rutas o tareas (sentarse, pescar, forjar, barrer, plantar arroz), gatos, gallinas, ciervos y mariposas.
+- **Pruebas:** `window.__valle.sim(segundos)` avanza la simulación sin dibujar y `window.__valle.keys` permite pulsar teclas desde un script (útil con el renderizado por software, que va a menos de 1 fps).
