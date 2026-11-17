@@ -31,6 +31,12 @@ await page.route('https://fonts.gstatic.com/**', r => r.fulfill({ status: 404, b
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const doc = html;
 await page.route('http://local.test/', r => r.fulfill({ status: 200, contentType: 'text/html', body: doc }));
+await page.route('http://local.test/assets/**', async (route) => {
+  const rel = decodeURIComponent(new URL(route.request().url()).pathname.slice(1));
+  const f = new URL('../' + rel, import.meta.url);
+  if (fs.existsSync(f)) await route.fulfill({ status: 200, contentType: rel.endsWith('.webp') ? 'image/webp' : rel.endsWith('.glb') ? 'model/gltf-binary' : 'application/octet-stream', body: fs.readFileSync(f) });
+  else await route.fulfill({ status: 404, body: 'nf' });
+});
 const t0 = Date.now();
 await page.goto('http://local.test/');
 try {

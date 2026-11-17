@@ -1,6 +1,6 @@
 # Valle de los Cerezos
 
-Mundo 3D de un valle japonés de cerezos en flor, renderizado en tiempo real en el navegador con Three.js. Todo el paisaje se genera por código (terreno, río, edificios, vegetación, nubes y luz), sin imágenes ni modelos externos.
+Mundo 3D de un valle japonés de cerezos en flor, renderizado en tiempo real en el navegador con Three.js. El paisaje se genera por código (terreno, río, edificios, vegetación, nubes y luz) y se viste con texturas reales CC0 de Poly Haven: hierba, roca, caminos, madera japonesa, tejas, muros de piedra, corteza, ramas de abeto, hojas y helechos (ver [assets/CREDITOS.md](assets/CREDITOS.md)).
 
 Es la base de un juego souls-like: un caballero recorre el valle a pie, habla con sus habitantes, descansa en hogueras y combate contra rōnin huecos camino de las arenas de los jefes.
 
@@ -8,8 +8,18 @@ Es la base de un juego souls-like: un caballero recorre el valle a pie, habla co
 
 | | |
 |---|---|
-| ![El caballero en la aldea](docs/capturas/captura-caballero.png) | ![Combate contra un rōnin hueco](docs/capturas/captura-combate.png) |
-| ![Puesto de té y arrozales](docs/capturas/captura-arrozales.png) | ![Escalinata en zigzag hacia el palacio](docs/capturas/captura-escalinata.png) |
+| ![Hierba densa y cerezos junto al río](docs/capturas/captura-valle-hierba.png) | ![Claro del bosque al amanecer](docs/capturas/captura-claro.png) |
+| ![El caballero con armadura laminada](docs/capturas/captura-caballero.png) | ![La aldea en la hora azul](docs/capturas/captura-aldea-noche.png) |
+| ![Combate contra un rōnin hueco](docs/capturas/captura-combate.png) | ![Escalinata en zigzag hacia el palacio](docs/capturas/captura-escalinata.png) |
+
+## Aspecto visual
+
+- **Terreno suave** (sin facetas) que mezcla seis texturas reales según la pendiente, los caminos, el bosque, la orilla y la nieve, con proyección triplanar en las paredes de roca.
+- **Árboles con tarjetas de follaje**: abetos con corteza y verticilos de ramas, árboles de hoja con racimos de hojas reales, helechos y arbustos; los cerezos llevan racimos de flores dibujados.
+- **Manto de hierba** denso y con viento alrededor del jugador, además de las matas dispersas por el valle.
+- **Arquitectura y rocas con material**: madera, yeso, piedra, tejas, paja y corteza aplicadas sin coordenadas de textura (triplanar), según el color de cada pieza.
+- **Personajes redondeados** con armadura laminada y metal que refleja el cielo.
+- **Atmósfera**: haces de luz hacia el sol, motas de polen y luz que flotan en el aire, gradación de color y viñeta.
 
 ## Zonas
 
@@ -28,7 +38,7 @@ Las coordenadas, conexiones y la API para la fase de juego están en [docs/MAPA.
 
 ## Cómo ejecutarlo
 
-No necesita instalación: abre `index.html` en un navegador con WebGL 2 (Chrome, Edge, Firefox o Safari recientes). Three.js 0.165.0 se carga desde cdn.jsdelivr.net, así que hace falta conexión.
+Necesita servirse por HTTP (las texturas de `assets/` no se pueden leer abriendo el archivo directamente; si fallan, el mundo se dibuja con el aspecto básico). Funciona en GitHub Pages o en local. Hace falta un navegador con WebGL 2 y conexión, porque Three.js 0.165.0 se carga desde cdn.jsdelivr.net.
 
 Para servirlo en local:
 
@@ -85,5 +95,7 @@ node tools/shoot.mjs prueba 1280 720 '[["wait",20000],["shot","inicio"],["eval",
 index.html          La escena completa (HTML, CSS y JavaScript)
 docs/MAPA.md        Zonas, coordenadas, conectividad y API
 docs/capturas/      Capturas reales del renderizado
+assets/tex/         Texturas WebP (≈1,3 MB) y assets/CREDITOS.md
 tools/shoot.mjs     Script de capturas con Playwright
+tools/build-assets.py  Prepara las texturas a partir de las descargas de Poly Haven
 ```
