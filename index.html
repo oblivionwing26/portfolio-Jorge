@@ -805,6 +805,13 @@ transformed.x += sw * .16 * bend * uWind; transformed.z += cos(uTime*1.3 + ip.x*
       const st = { x: Z0.x + Math.cos(a) * rr, z: Z0.z + Math.sin(a) * rr, r: 4.6, f: 3, fix: VY, y: VY };
       villageHouses.push({ s: st, type: types[i] }); padList.push(st);
     });
+    // segundo anillo: la aldea crece hacia fuera (se deja libre la salida del camino y el gran cerezo)
+    const ang2 = [12, 42, 72, 102, 132, 162, 226, 312, 342], types2 = ['machiya', 'small', 'minka', 'smallV', 'shop', 'kura', 'small', 'machiya', 'smallV'];
+    ang2.forEach((deg, i) => {
+      const a = deg * Math.PI / 180, rr = types2[i] === 'minka' ? 30 : 28;
+      const st = { x: Z0.x + Math.cos(a) * rr, z: Z0.z + Math.sin(a) * rr, r: 5, f: 4, fix: VY, y: VY };
+      villageHouses.push({ s: st, type: types2[i] }); padList.push(st);
+    });
     // salas de templos sobre plataformas (excluyen vegetación)
     padList.push({ x: -122, z: -152, r: 15, f: 2, fix: sites.zRuins.y, y: sites.zRuins.y, noFlat: true });
     padList.push({ x: -12, z: -306, r: 15, f: 2, fix: sites.zPalace.y, y: sites.zPalace.y, noFlat: true });
@@ -1057,7 +1064,8 @@ float td_lum(vec3 c){ return dot(c, vec3(.3, .59, .11)); }
   const terrainSplat = (sh) => {
     for (const [u, n] of Object.entries(TERRAIN_TEX)) sh.uniforms[u] = { value: TEX[n] };
     sh.vertexShader = sh.vertexShader.replace('void main() {', 'attribute vec4 splat; attribute float snow; varying vec4 vSplat; varying float vSnow;\nvoid main() {\nvSplat = splat; vSnow = snow;');
-    sh.fragmentShader = sh.fragmentShader.replace('void main() {', `uniform sampler2D tGrass, tForest, tPath, tPebble, tRock, tMoss, tSnow; varying vec4 vSplat; varying float vSnow; uniform float uDetail, uBump;
+    sh.uniforms.uTime = U.uTime;
+    sh.fragmentShader = sh.fragmentShader.replace('void main() {', `uniform sampler2D tGrass, tForest, tPath, tPebble, tRock, tMoss, tSnow; varying vec4 vSplat; varying float vSnow; uniform float uDetail, uBump, uTime;
 ${TD_FUNCS}${DETAIL_FUNCS}
 void main() {
 float tdH = .5;`).replace('#include <color_fragment>', `#include <color_fragment>
@@ -1086,6 +1094,8 @@ float tdH = .5;`).replace('#include <color_fragment>', `#include <color_fragment
   d = mix(vec3(.5), d, mix(1., .4, smoothstep(8., 50., dist)));
   d = mix(d * 2., vec3(1.), far * .55);
   diffuseColor.rgb *= mix(vec3(1.), d, uDetail);
+  // sombras de nubes que cruzan el valle
+  diffuseColor.rgb *= 1. - .22 * smoothstep(.5, .72, td_fbm(pw.xz * .0042 + vec2(uTime * .006, uTime * .002)));
   tdH = td_lum(d) * (1. - smoothstep(6., 28., dist));
 }
 #endif`).replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = clamp(roughnessFactor + (.5 - tdH) * .25, .45, 1.);');
@@ -1745,6 +1755,19 @@ float tdH = .5;`).replace('#include <color_fragment>', `#include <color_fragment
     for (let i = 0; i < 4; i++) { const a = i * Math.PI / 2 - .32; postLantern(Z0.x + Math.cos(a) * 10.8, Z0.z + Math.sin(a) * 10.8, -a); }
     addLamp(Z0.x + 3.5, VY + 2.6, Z0.z + 1, .9); addLamp(Z0.x - 3, VY + 2.6, Z0.z - 2.5, .6);
     well(Z0.x - 8, Z0.z + 9.5, VY);
+    // puestos del mercado con toldos de colores
+    const awn = [PAL.cloth, srgb('#2d4f8a'), srgb('#e8b84a'), srgb('#3f7a52'), srgb('#c86a9a')];
+    [[57, 20.5], [117, 21], [212, 20.5], [325, 21.5], [163, 21]].forEach(([deg, rr], i) => {
+      const a = deg * Math.PI / 180, x = Z0.x + Math.cos(a) * rr, z = Z0.z + Math.sin(a) * rr, F = Frame.at(x, VY, z, -a - Math.PI / 2);
+      F.box('solid', PAL.woodMid, 2.6, .9, 1.0, 0, .45, 0); F.box('solid', PAL.woodLight, 2.7, .08, 1.1, 0, .92, 0);
+      for (const sx of [-1.25, 1.25]) for (const sz of [-.5, .5]) F.box('solid', PAL.wood, .1, 2.4, .1, sx, 1.2, sz);
+      F.box('cloth', awn[i], 3.1, .06, 1.8, 0, 2.45, .3, -.22, 0, 0); for (let k = 0; k < 7; k++) F.box('cloth', k % 2 ? awn[i] : PAL.paper, .44, .25, .03, -1.32 + k * .44, 2.18, 1.18);
+      const goods = [srgb('#e8a33a'), srgb('#c23a2c'), srgb('#7aa04a'), srgb('#f4e2b8'), srgb('#8a5a3a')];
+      for (let k = 0; k < 9; k++) F.geo('solid', goods[(k + i) % 5], new THREE.IcosahedronGeometry(.11 + zr() * .05, 0), -1.1 + (k % 5) * .5 + zrand(-.1, .1), 1.05, -.25 + Math.floor(k / 5) * .35);
+      F.cyl('solid', srgb('#a8865a'), .28, .3, -1.6, .15, .6, 10); F.cyl('solid', srgb('#a8865a'), .25, .28, 1.65, .14, .7, 10);
+      F.box('glow', PAL.lampRed, .28, .36, .28, 1.25, 2.0, .9); F.col(0, .45, 0, 1.35, .45, .55);
+    });
+    for (let i = 0; i < 10; i++) { const a = (i / 10 * 360 + 18) * Math.PI / 180; if (Math.abs(((a * 180 / Math.PI) - 270 + 540) % 360 - 180) < 22) continue; postLantern(Z0.x + Math.cos(a) * 23.5, Z0.z + Math.sin(a) * 23.5, -a); addLamp(Z0.x + Math.cos(a) * 23.5, VY + 1.8, Z0.z + Math.sin(a) * 23.5, .25); }
     const gx = -21.6, gz = 94.5; torii({ x: gx, y: H(gx, gz) - .05, z: gz }, Math.atan2(4, -16), .78);
   }
 
@@ -2789,6 +2812,73 @@ float tdH = .5;`).replace('#include <color_fragment>', `#include <color_fragment
   }
 
   nexo(); kronos(); ouro(); pickupsBuild(); shortcuts(); celestialTower();
+  /* ---------- bóveda de Ouro: ríos y cascadas de lava, cristales de cuarzo y portal de entrada ---------- */
+  const LAVA = { pts: [], w: 2.6 };
+  const LAVA_GLSL = `
+float lh(vec2 p){ p = fract(p*vec2(123.34,456.21)); p += dot(p,p+45.32); return fract(p.x*p.y); }
+float ln(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f); return mix(mix(lh(i),lh(i+vec2(1,0)),f.x), mix(lh(i+vec2(0,1)),lh(i+vec2(1,1)),f.x), f.y); }
+float lf(vec2 p){ float a=.5,s=0.; for(int i=0;i<5;i++){ s+=a*ln(p); p=p*2.03+vec2(1.7,9.2); a*=.5; } return s; }
+vec3 lavaCol(vec2 p, float t){ vec2 q = vec2(lf(p + vec2(0., t*.35)), lf(p*1.3 - vec2(t*.2, 0.)));
+ float n = lf(p*1.7 + q*2.2 + vec2(0., t*.6)); float crust = smoothstep(.52, .66, n);
+ vec3 hot = mix(vec3(1.,.32,.04), vec3(1.,.86,.42), smoothstep(.25, .6, q.x));
+ return mix(hot * 1.15, vec3(.07,.035,.03), crust * .9) + vec3(.9,.3,.05) * pow(1. - crust, 6.) * .35; }`;
+  const lavaMat = new THREE.ShaderMaterial({ uniforms: { uTime: U.uTime }, side: THREE.DoubleSide,
+    vertexShader: `varying vec2 vUv; varying vec3 vW; void main(){ vUv = uv; vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: `uniform float uTime; varying vec2 vUv; varying vec3 vW; ${LAVA_GLSL}
+void main(){ vec3 c = lavaCol(vec2(vUv.x * 2.5, vUv.y * 9.), uTime); float edge = smoothstep(0., .14, vUv.x) * smoothstep(1., .86, vUv.x); gl_FragColor = vec4(mix(vec3(.25,.06,.02), c, edge), 1.); }` });
+  const lavaFallMat = new THREE.ShaderMaterial({ uniforms: { uTime: U.uTime }, transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+    fragmentShader: `uniform float uTime; varying vec2 vUv; ${LAVA_GLSL}
+void main(){ vec3 c = lavaCol(vec2(vUv.x * 3., vUv.y * 4. + uTime * 1.6), uTime * 2.); float a = smoothstep(0., .25, vUv.x) * smoothstep(1., .75, vUv.x); gl_FragColor = vec4(c * .9, a * .9); }` });
+  function caveExtras() {
+    const C = OURO, F0 = C.f, ell = (a, r) => [C.x + Math.cos(a) * r * C.rx / 34, C.z + Math.sin(a) * r * C.rz / 34];
+    // río de lava: arco que rodea la bóveda por el norte, alimentado por dos cascadas
+    const ctrl = []; for (let i = 0; i <= 16; i++) { const a = 3.55 + i / 16 * 2.75, r = 27.2 + 2.2 * Math.sin(i * .9); const [x, z] = ell(a, r); ctrl.push(new V3(x, 0, z)); }
+    const curve = new THREE.CatmullRomCurve3(ctrl), N = 160, pos = [], uv = [], idx = [];
+    for (let i = 0; i <= N; i++) {
+      const t = i / N, p = curve.getPointAt(t), tg = curve.getTangentAt(t), nx = -tg.z, nz = tg.x, w = LAVA.w * (1 + .25 * Math.sin(t * 19));
+      for (const sd of [-1, 1]) { const x = p.x + nx * w * sd, z = p.z + nz * w * sd; pos.push(x, caveFloorY(x, z) + .06, z); uv.push(sd > 0 ? 1 : 0, t * 18); }
+      LAVA.pts.push([p.x, p.z]);
+      if (i < N) { const a = i * 2; idx.push(a, a + 2, a + 1, a + 1, a + 2, a + 3); }
+      if (i % 8 === 0) { pointLights.push({ x: p.x, y: caveFloorY(p.x, p.z) + 1.6, z: p.z, k: .55, col: 0xff6a1e, flick: true }); for (let k = 0; k < 6; k++) embers.push(p.x + zrand(-2, 2), caveFloorY(p.x, p.z) + .2, p.z + zrand(-2, 2), zr() * 10); }
+    }
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2)); g.setIndex(idx);
+    const river = new THREE.Mesh(g, lavaMat); scene.add(river); caveMeshes.push(river);
+    // orilla de roca oscura y basalto
+    for (let i = 0; i < 70; i++) { const t = zr(), p = curve.getPointAt(t), tg = curve.getTangentAt(t), sd = zr() < .5 ? -1 : 1, off = LAVA.w * zrand(1.05, 1.7), x = p.x - tg.z * off * sd, z = p.z + tg.x * off * sd; Frame.at(x, caveFloorY(x, z), z, zr() * 6).geo('cave', srgb('#1a1418').lerp(srgb('#3a2a26'), zr()), new THREE.DodecahedronGeometry(zrand(.3, .8), 0), 0, .1, 0, zr(), zr(), zr()); }
+    // cascadas de lava desde la pared
+    for (const t of [0, 1]) {
+      const p = curve.getPointAt(t), dir = new V3(p.x - C.x, 0, p.z - C.z).normalize(), top = F0 + 14, bx = p.x + dir.x * 1.2, bz = p.z + dir.z * 1.2;
+      const fg = new THREE.PlaneGeometry(3.4, top - F0, 1, 8); const f = new THREE.Mesh(fg, lavaFallMat); f.position.set(bx, (top + F0) / 2 + caveFloorY(bx, bz) - F0, bz); f.lookAt(C.x, f.position.y, C.z); scene.add(f); caveMeshes.push(f);
+      pointLights.push({ x: bx - dir.x * 2, y: F0 + 5, z: bz - dir.z * 2, k: 1, col: 0xff7a26, flick: true });
+    }
+    // cristales de cuarzo: prismas hexagonales con punta, azules y morados
+    const prism = (() => { const gg = new THREE.CylinderGeometry(.5, .5, 1, 6, 1); gg.translate(0, .5, 0); const tip = new THREE.ConeGeometry(.5, .6, 6); tip.translate(0, 1.3, 0); const m = BGU.mergeGeometries([gg.toNonIndexed(), tip.toNonIndexed()].map(x => { x.deleteAttribute('uv'); return x; })); m.computeVertexNormals(); return m; })();
+    const clusters = [];
+    for (let i = 0; i < 34; i++) { const a = zr() * TAU, e = zrand(.55, .9), [x, z] = ell(a, 34 * Math.sqrt(e)); if (LAVA.pts.some(q => Math.hypot(q[0] - x, q[1] - z) < LAVA.w + 1.5)) continue; clusters.push([x, caveFloorY(x, z), z, zr() < .5 ? 0 : 1, false]); }
+    for (let i = 0; i < 14; i++) { const p = domePoint(zr() * TAU, zrand(.5, 1.1), .97); clusters.push([p[0], p[1], p[2], i % 2, true]); }
+    for (const hue of [0, 1]) {
+      const list = []; const mat = new THREE.MeshStandardMaterial({ color: srgb(hue ? '#9a5cff' : '#4aa8ff'), emissive: srgb(hue ? '#7a3cff' : '#2a8cff'), emissiveIntensity: 1.3, roughness: .08, metalness: .35, transparent: true, opacity: .9 });
+      prep(mat, 'crystal' + hue, (sh) => { caveHook(sh); sh.fragmentShader = sh.fragmentShader.replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n{ float fr = pow(1. - abs(dot(normalize(vViewPosition), normal)), 2.); totalEmissiveRadiance *= .55 + .3 * sin(uTime * 1.3 + vViewPosition.x * .4) + fr * 1.4; }').replace('void main() {', 'uniform float uTime;\nvoid main() {'); });
+      for (const [x, y, z, h, hang] of clusters) {
+        if (h !== hue) continue; const n = 4 + Math.floor(zr() * 6), base = zrand(.7, 1.6);
+        for (let k = 0; k < n; k++) { const L = base * zrand(.6, 2.4) * (k === 0 ? 1.5 : 1), wdt = L * zrand(.12, .2), tx = zrand(-.5, .5), tz = zrand(-.5, .5), m = new THREE.Matrix4().compose(new V3(x + tx, y - (hang ? 0 : .15), z + tz), new THREE.Quaternion().setFromEuler(new THREE.Euler((hang ? Math.PI : 0) + zrand(-.55, .55), zr() * 6, zrand(-.55, .55))), new V3(wdt, L, wdt)); list.push(m); }
+        pointLights.push({ x, y: y + (hang ? -2 : 2), z, k: .45, col: hue ? 0xa060ff : 0x50a8ff });
+        if (!hang) COLL.cyls.push({ x, z, y0: y, y1: y + 2.5, r: base * .8 });
+      }
+      const im = new THREE.InstancedMesh(prism, mat, list.length); list.forEach((m, i) => im.setMatrixAt(i, m)); scene.add(im); caveMeshes.push(im);
+    }
+    // portal brillante en la verja de las ruinas (se ve desde lejos)
+    const vy = H(-122, -167) - .1, portal = new THREE.Mesh(new THREE.PlaneGeometry(4, 5.6), new THREE.ShaderMaterial({ transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, uniforms: { uTime: U.uTime },
+      vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }`,
+      fragmentShader: `uniform float uTime; varying vec2 vUv; ${LAVA_GLSL}
+void main(){ vec2 c = vUv - .5; float r = length(c * vec2(1., .8)), a = atan(c.y, c.x); float sw = lf(vec2(a * 2. + uTime * .6 - r * 6., r * 5. - uTime * .4));
+ vec3 col = mix(vec3(1., .55, .15), vec3(1., .85, .45), sw) * (1.2 + sw); float m = smoothstep(.5, .2, r) * (.55 + .45 * sw); gl_FragColor = vec4(col * m, m); }` }));
+    portal.position.set(-122, vy + 2.9, -166.6); scene.add(portal);
+    pointLights.push({ x: -122, y: vy + 2.5, z: -164.5, k: .9, col: 0xffa040, flick: true });
+    signpost(-128, -150, .3);
+  }
+  caveExtras();
 
   /* ============================================================
      VIDA Y DETALLE: hogueras, arrozales, puesto de té, bambú y orillas
@@ -4019,6 +4109,31 @@ void main(){ vec2 p = vW.xz*.011; float n = fbm2(p + vec2(uTime*.004, uTime*.001
   const clouds = [];
   for (const [y, sc] of [[78, 1], [84, .9], [90, .78]]) { const g = new THREE.PlaneGeometry(380 * sc, 240 * sc); g.rotateX(-Math.PI / 2); const m = new THREE.Mesh(g, cloudMat); m.position.set(-10, y, -292); m.renderOrder = 4; scene.add(m); clouds.push(m); }
 
+  /* ---------------- capa alta de nubes con volumen aparente ----------------
+     Ruido con deformación de dominio; la cara hacia el sol se ilumina, la parte densa se sombrea y los bordes
+     se deshilachan. Dos capas a distinta altura dan profundidad; ambas siguen a la cámara en el plano. */
+  const deckU = { uTime: U.uTime, uSun: { value: new V3(0, 1, 0) }, uLit: { value: new C3(1, 1, 1) }, uShade: { value: new C3(.5, .55, .65) }, uAmt: { value: .8 }, uCov: { value: .5 } };
+  const deckMat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, fog: false, side: THREE.DoubleSide, uniforms: deckU,
+    vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; gl_Position = projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: `uniform float uTime, uAmt, uCov; uniform vec3 uSun, uLit, uShade; varying vec3 vW; ${NOISE_GLSL}
+float dens(vec2 p){ vec2 q = vec2(fbm2(p), fbm2(p + 5.2)); return fbm2(p * 1.1 + q * 1.6 + vec2(uTime * .006, uTime * .002)); }
+void main(){ vec2 p = vW.xz * .0021 + vec2(vW.y * .003, 0.);
+ float d = dens(p), th = .62 - uCov * .2; float c = smoothstep(th, th + .2, d);
+ if (c < .004) discard;
+ vec2 sd = normalize(uSun.xz + 1e-4) * .02; float d2 = dens(p + sd);
+ float lit = clamp(.55 + (d - d2) * 7. + uSun.y * .25, 0., 1.);
+ float rim = smoothstep(th, th + .07, d) - smoothstep(th + .07, th + .3, d);
+ vec3 col = mix(uShade, uLit, lit) + uLit * rim * .35;
+ float dist = length(vW.xz - cameraPosition.xz); float fade = 1. - smoothstep(1400., 2600., dist);
+ gl_FragColor = vec4(col, c * uAmt * fade); }` });
+  const decks = [];
+  for (const [y, sz] of [[260, 6000], [360, 7000]]) { const m = new THREE.Mesh(new THREE.PlaneGeometry(sz, sz).rotateX(-Math.PI / 2), deckMat); m.position.y = y; m.renderOrder = -2; m.frustumCulled = false; scene.add(m); decks.push(m); }
+  function updateDecks() {
+    for (const m of decks) { m.position.x = camera.position.x; m.position.z = camera.position.z; }
+    deckU.uSun.value.copy(cur.sunDir); deckU.uLit.value.copy(cur.cloudLit).lerp(cur.sunCol, .4).multiplyScalar(1.15); deckU.uShade.value.copy(cur.cloudCol);
+    deckU.uCov.value = .35 + cur.cloud * .6; deckU.uAmt.value = .85;
+  }
+
   /* ---------------- luciérnagas ---------------- */
   const FF = 220; const ffPos = new Float32Array(FF * 3), ffSeed = new Float32Array(FF);
   for (let i = 0; i < FF; i++) {
@@ -4915,6 +5030,11 @@ void main(){ vec4 c = texture2D(tDiffuse, vUv);
       } else if (act.type === 'plant') {
         rate = 8; const k = .5 + .5 * Math.sin(t * 1.6);
         tg.spX = 1.0; tg.neckX = -.3; tg.knL = .5; tg.knR = .5; tg.thL = -.4; tg.thR = -.4; tg.shRx = -.6 - .5 * k; tg.elR = -.3; tg.shLx = -.3; tg.elL = -.5; tg.hipsY = -.08;
+      } else if (act.type === 'dance') {
+        rate = 10; const b = t * 2.4, sw = Math.sin(b), sw2 = Math.sin(b * 2);
+        tg.hipsRz = .12 * sw; tg.hipsRy = .3 * Math.sin(b * .5); tg.spZ = -.1 * sw; tg.spX = .05; tg.hipsY = -.04 * Math.abs(sw2);
+        tg.shLz = 1.6 + .5 * sw; tg.shRz = -1.6 + .5 * sw; tg.shLx = -.4 + .3 * sw2; tg.shRx = -.4 - .3 * sw2; tg.elL = -.9 - .4 * sw; tg.elR = -.9 + .4 * sw;
+        tg.thL = -.25 * Math.max(0, sw2); tg.knL = .4 * Math.max(0, sw2); tg.thR = -.25 * Math.max(0, -sw2); tg.knR = .4 * Math.max(0, -sw2); tg.headY = .3 * sw; tg.neckX = .1;
       } else if (act.type === 'wave') {
         rate = 12; tg.shRz = -2.5; tg.shRx = -.3; tg.elR = -.4 + .35 * Math.sin(t * 9);
       } else if (act.type === 'talk') {
@@ -4997,7 +5117,7 @@ void main(){ vec4 c = texture2D(tDiffuse, vUv);
     for (const m of R.bodyMeshes) m.parent.remove(m);
     if (look.headSkin) { const h = new THREE.Mesh(GS, cm(look.headSkin)); h.castShadow = true; R.head.add(h); }
     const mixer = new THREE.AnimationMixer(S), A = {};
-    for (const [k, n] of Object.entries({ idle: look.idle || 'idle', walk: 'walk', run: 'run', agree: 'agree', dance: 'm_SambaDance', sneak: 'sneak_pose', shake: 'headShake' })) if (HUMAN.clips[n]) { A[k] = mixer.clipAction(HUMAN.clips[n]); A[k].play(); A[k].setEffectiveWeight(0); }
+    for (const [k, n] of Object.entries({ idle: look.idle || 'idle', walk: 'walk', run: 'run', agree: 'agree', sneak: 'sneak_pose', shake: 'headShake' })) if (HUMAN.clips[n]) { A[k] = mixer.clipAction(HUMAN.clips[n]); A[k].play(); A[k].setEffectiveWeight(0); }
     R.H = { S, b, mixer, A, w: 0, look, ws: { idle: 1 } };
   }
   // alinea un hueso para que apunte (y gire) como el segmento de la figura procedural
@@ -5016,13 +5136,12 @@ void main(){ vec4 c = texture2D(tDiffuse, vUv);
     B.getWorldQuaternion(_hq); _hq.premultiply(_hq2);
     B.parent.getWorldQuaternion(_hq2).invert(); B.quaternion.copy(_hq2.multiply(_hq)); B.updateMatrixWorld(true);
   }
-  const OVERLAY = { roll: 1, hit: .9, stagger: .9, die: 1, drink: .8, rest: 1, sit: 1, fish: 1, sweep: .9, hammer: .95, plant: 1, wave: .8 };
+  const OVERLAY = { dance: 1, roll: 1, hit: .9, stagger: .9, die: 1, drink: .8, rest: 1, sit: 1, fish: 1, sweep: .9, hammer: .95, plant: 1, wave: .8 };
   function humanPose(R, st, act, dt) {
     const H = R.H, sp = st.speed || 0;
     // pesos de locomoción y oficio
     let tgt = { idle: 1 - smooth(.15, 1.6, sp), walk: smooth(.15, 1.6, sp) * (1 - smooth(2.8, 4.6, sp)), run: smooth(2.8, 4.6, sp), agree: 0, dance: 0, sneak: 0 };
     if (act && act.type === 'talk') { tgt = { idle: .3, agree: .7 }; }
-    if (act && act.type === 'dance') { tgt = { dance: 1 }; }
     if (R.kind === 'ronin' && sp < .5 && !act) { tgt.idle = 0; tgt.sneak = 1; }
     const k = 1 - Math.exp(-8 * dt);
     for (const [n, a] of Object.entries(H.A)) { const c = H.ws[n] || 0, t = tgt[n] || 0; H.ws[n] = c + (t - c) * k; a.setEffectiveWeight(H.ws[n]); }
@@ -5374,6 +5493,7 @@ void main(){ float x = abs(vC.x - .5) * 2.; float a = (1. - x * x) * smoothstep(
     if (landV > 3) { PL.land = Math.min(1, landV / 12); sfx.step(false); burst(PL.x, PL.y + .1, PL.z, '#b8a888', 8, 1.6, .6, .07, .4); }
     if (landV > 19 && !PL.dead) { const dmg = (landV - 19) * 9; if (dmg >= PL.hp) { PL.hp = 0; die('HAS CAÍDO'); } else { PL.hp -= dmg; startAct('hit', { dur: .5 }); flashHud(); updateHud(); sfx.hurt(); } }
     if (PL.y < -60 && !PL.dead) { PL.hp = 0; die(); }
+    if (PL.cave && PL.grounded && !PL.dead && LAVA.pts.some(q => Math.hypot(q[0] - PL.x, q[1] - PL.z) < LAVA.w * .85)) { PL.burn = (PL.burn || 0) + dt; if (PL.burn > .25) { PL.burn = 0; PL.hp -= 6; flashHud(); updateHud(); burst(PL.x, PL.y + .4, PL.z, '#ff7a2a', 8, 2, 2, .07, .5); if (PL.hp <= 0) { PL.hp = 0; die('CONSUMIDO POR LA LAVA'); } } }
     // pasos
     if (PL.grounded && PL.speed > 1.2 && (!act || act.type === 'drink')) { PL.lastStep += moved; const sl = PL.speed > 6 ? 1.5 : PL.speed > 3 ? 1.25 : .8; if (PL.lastStep > sl) { PL.lastStep = 0; sfx.step(PL.water); if (PL.water) burst(PL.x, PL.y + .1, PL.z, '#cfe4ff', 6, 1.4, 1.2, .06, .5); else if (PL.speed > 6) burst(PL.x, PL.y + .05, PL.z, '#a89a80', 3, .8, .4, .06, .35); } }
     // estamina
@@ -5555,7 +5675,7 @@ void main(){ float x = abs(vC.x - .5) * 2.; float a = (1. - x * x) * smoothstep(
      ============================================================ */
   const NPCS = [];
   function addNPC(o) {
-    const R = makeVillager(o); humanize(R, { body: o.cols?.body || '#55607a', joint: o.cols?.obi || '#3a2a22', headSkin: null, idle: o.seed % 2 ? 'idle' : 's_Idle' }); compactRig(R); scene.add(R.root);
+    const R = makeVillager(o); humanize(R, { body: o.cols?.body || '#55607a', joint: o.cols?.obi || '#3a2a22', headSkin: null, idle: 'idle' }); compactRig(R); scene.add(R.root);
     const n = Object.assign({ R, x: o.at[0], z: o.at[1], y: 0, yaw: o.yaw || 0, speed: 0, wait: Math.random() * 3, wi: 0, dirW: 1, time: Math.random() * 10, line: 0, cave: false, vy: 0, grounded: true, h: 1.6 }, o);
     n.y = groundInfo(n.x, n.z, 999, false).y; NPCS.push(n); return n;
   }
@@ -5797,7 +5917,7 @@ void main(){ float x = abs(vC.x - .5) * 2.; float a = (1. - x * x) * smoothstep(
     } else {
       controls.enablePan = true; controls.enableZoom = true; controls.minDistance = 2; controls.maxDistance = 380; controls.zoomToCursor = true; controls.maxPolarAngle = Math.PI * .495;
       controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.DOLLY, RIGHT: THREE.MOUSE.PAN };
-      PL.lock = null; if (GAME.dialog) advanceDialog(); GAME.dialog = null; $('#gDialog').hidden = true; closeTravel();
+      PL.lock = null; if (GAME.dialog) advanceDialog(); GAME.dialog = null; $('#gDialog').hidden = true; closeTravel(); promptTxt = ''; $('#gPrompt').classList.remove('show');
     }
     updateStatus();
   }
@@ -5915,17 +6035,46 @@ void main(){ float x = abs(vC.x - .5) * 2.; float a = (1. - x * x) * smoothstep(
     instanceModel('mushrooms', mu);
   }
 
+  /* ---------- hojas que caen de arces y ginkgos cercanos ---------- */
+  const LFN = 220, lfMesh = new THREE.InstancedMesh(new THREE.PlaneGeometry(.16, .13), prep(new THREE.MeshStandardMaterial({ side: THREE.DoubleSide, roughness: .7, emissive: srgb('#301008'), emissiveIntensity: .5 }), 'leaffall'), LFN);
+  lfMesh.frustumCulled = false; scene.add(lfMesh);
+  const lfS = new Float32Array(LFN * 8); // x y z vx vz fase vida especie
+  const leafTrees = SPECIAL_TREES.filter(t => t.species !== 'willow');
+  function spawnLeaf(i) {
+    const near = leafTrees.filter(t => Math.hypot(t.x - camera.position.x, t.z - camera.position.z) < 60); const o = i * 8;
+    if (!near.length) { lfS[o + 6] = -1; return; }
+    const t = near[Math.floor(Math.random() * near.length)], a = Math.random() * TAU, r = Math.random() * 3.5;
+    lfS[o] = t.x + Math.cos(a) * r; lfS[o + 1] = t.y + 4 + Math.random() * 4; lfS[o + 2] = t.z + Math.sin(a) * r; lfS[o + 3] = (Math.random() - .3) * .6; lfS[o + 4] = (Math.random() - .5) * .5; lfS[o + 5] = Math.random() * 10; lfS[o + 6] = 6 + Math.random() * 6; lfS[o + 7] = t.species === 'maple' ? 0 : 1;
+    lfMesh.setColorAt(i, srgb(t.species === 'maple' ? ['#d8452c', '#ee7030', '#c23436'][i % 3] : ['#f2c040', '#e8b030'][i % 2]));
+  }
+  for (let i = 0; i < LFN; i++) spawnLeaf(i);
+  let lfT = 0;
+  function updateLeaves(dt, t) {
+    lfT -= dt; const m = _cm, q = _cq, e = _ce, p = _cp, sc = _cs.set(1, 1, 1);
+    for (let i = 0; i < LFN; i++) {
+      const o = i * 8; lfS[o + 6] -= dt;
+      if (lfS[o + 6] < 0) { if (lfT < 0) { spawnLeaf(i); if (lfS[o + 6] > 0) lfT = .03; } if (lfS[o + 6] < 0) { m.makeScale(0, 0, 0); lfMesh.setMatrixAt(i, m); continue; } }
+      const ph = lfS[o + 5] + t * 2.2;
+      lfS[o] += (lfS[o + 3] + Math.sin(ph) * .6 + U.uWind.value * .4) * dt; lfS[o + 2] += (lfS[o + 4] + Math.cos(ph * .8) * .5) * dt; lfS[o + 1] -= (.55 + .35 * Math.sin(ph * 1.7)) * dt;
+      if (lfS[o + 1] < Hfast(lfS[o], lfS[o + 2]) + .05) { lfS[o + 6] = Math.min(lfS[o + 6], .4); lfS[o + 1] = Hfast(lfS[o], lfS[o + 2]) + .05; }
+      p.set(lfS[o], lfS[o + 1], lfS[o + 2]); e.set(Math.sin(ph) * 1.2, ph * .5, Math.cos(ph * 1.3)); q.setFromEuler(e); m.compose(p, q, sc); lfMesh.setMatrixAt(i, m);
+    }
+    lfMesh.instanceMatrix.needsUpdate = true; if (lfMesh.instanceColor) lfMesh.instanceColor.needsUpdate = true;
+  }
+
   /* ---------- bucle del juego ---------- */
   function gameUpdate(dtRaw) {
     if (GAME.freeze) return;
     let dt = dtRaw;
     if (GAME.hitStop > 0) { GAME.hitStop -= dtRaw; dt = dtRaw * .08; }
     if (GAME.on) playerUpdate(dt);
+    // entrar en la bóveda solo con cruzar el portal de la verja
+    if (GAME.on && !PL.dead && !PL.cave && performance.now() > (GAME.autoT || 0) && Math.hypot(PL.x + 122, PL.z + 165.6) < 1.9) { GAME.autoT = performance.now() + 4000; const it = INTERACT.find(i => i.auto); if (it) it.fn(); }
     else { KN.root.position.set(PL.x, PL.y, PL.z); animate(KN, { speed: 0, dist: 0, time: PL.time += dt, act: PL.act && PL.act.type === 'rest' ? PL.act : null }, dt); }
     for (const e of EN) enemyUpdate(e, GAME.on ? dt : 0);
     for (const n of NPCS) npcUpdate(n, dt);
     for (const a of ANIMALS) animalUpdate(a, dt);
-    updateButterflies(elapsed); updateFx(dt); updateCarpet();
+    updateButterflies(elapsed); updateFx(dt); updateCarpet(); updateLeaves(dt, elapsed);
     shaftMat.uniforms.uSun.value.copy(cur.sunDir); shaftMat.uniforms.uCol.value.copy(cur.sunCol); shaftMat.uniforms.uAmt.value = (.05 + .07 * clamp(cur.sunI - .8, 0, 2)) * (1 - cur.rain * .85) * (1 - smooth(.55, .95, cur.sunDir.y) * .6);
     moteMat.uniforms.uCam.value.copy(camera.position); moteMat.uniforms.uAmt.value = .5 + .5 * cur.fireflies + .4 * (1 - cur.rain) * (1 - cur.fireflies); moteMat.uniforms.uCol.value.setRGB(1, .82 + .1 * cur.fireflies, .6 + .25 * cur.fireflies);
     if (dropMark.visible) { dropMark.userData.m.rotation.y += dt * 2; dropMark.userData.m.position.y = .5 + .12 * Math.sin(elapsed * 3); if (Math.random() < .3) burst(dropMark.position.x, dropMark.position.y + .3, dropMark.position.z, '#ff9ad0', 1, .4, 1.2, .06, .9); }
@@ -5954,6 +6103,14 @@ void main(){ float x = abs(vC.x - .5) * 2.; float a = (1. - x * x) * smoothstep(
       fx: [0, 0, 0], lines: ['*clang* … *clang* … Perdona, el acero no espera.', 'Este yunque es un altar: algún día forjaré aquí las piezas de tu equipo, una por cada hito que encuentres en el valle.', 'Esos monolitos, espadas clavadas y cofres de los caminos… cada uno guarda algo. Búscalos.', 'Y no ataques a lo loco: un golpe en plena carga de un rōnin lo derriba, pero si ya ha empezado el tajo, apártate rodando.'] });
     addNPC({ name: 'Kenta', at: at(0, 5.2), scale: .66, seed: 3, cols: { body: '#3d6a9a', obi: '#e8e2d6' }, route: [at(0, 5.2), at(60, 5.2), at(120, 5.2), at(180, 5.2), at(240, 5.2), at(300, 5.2)], loop: true, walk: 2.6, pause: .05, wave: true, lines: ['¡No me pillas! ¡No me pillas!', '¿Esa espada es de verdad? Mi hermana dice que los caballeros no existen.'] });
     addNPC({ name: 'Aiko', at: at(180, 5.2), scale: .62, seed: 0, cols: { body: '#c25a6a', obi: '#f4d27a' }, pin: '#f4b9c9', route: [at(180, 5.2), at(240, 5.2), at(300, 5.2), at(0, 5.2), at(60, 5.2), at(120, 5.2)], loop: true, walk: 2.5, pause: .05, wave: true, lines: ['¡Kenta, espérame!', 'Yo sí creo en los caballeros. Mi abuela dice que había uno que dormía junto al fuego.'] });
+    addNPC({ name: 'Bailarina Hana', at: at(150, 6.2), yaw: -.5, idleAct: 'dance', fixedAct: true, seed: 0, cols: { body: '#c23a5a', obi: '#f4d27a' }, pin: '#f4b9c9', lookAt: false,
+      lines: ['¡Esta noche es la fiesta de los faroles! Llevo semanas ensayando.', 'Si bailas lo bastante bien, dicen que los espíritus del cerezo grande te conceden un deseo.'] });
+    addNPC({ name: 'Vecino Jiro', at: at(30, 21), seed: 1, cols: { body: '#4a5a6a', obi: '#c99a3e' }, hat: 'band', route: [at(30, 21), at(90, 21), at(150, 21), at(210, 21), at(250, 21)], walk: 1.1, pause: .5,
+      lines: ['La aldea ha crecido mucho. Hasta tenemos mercado los días de luna llena.', 'El gran cerezo del oeste tiene más de mil años. Nadie se atreve a talar ni una rama.'] });
+    addNPC({ name: 'Comerciante Rin', at: at(117, 19), yaw: 0, idleAct: 'talk', seed: 3, lookAt: true, cols: { body: '#3f7a52', obi: '#e8b84a' }, pin: '#ffd27a',
+      lines: ['¡Caquis secos, pescado ahumado, talismanes contra los rōnin! Bueno… los talismanes no funcionan.', 'Mi hermano vende sake en el puesto azul. Si lo bebes junto a la hoguera, cura todo.'] });
+    addNPC({ name: 'Anciano Tomo', at: at(300, 19), yaw: 0, idleAct: 'sit', lookAt: true, seed: 2, cols: { body: '#5a4a3a', obi: '#2d3654' }, hair: '#d8d4cc',
+      lines: ['De joven subí a la Torre Celestial. Arriba el cielo se vuelve de oro y el viento canta.', 'La bóveda de Ouro ya no es un secreto: la verja de las ruinas brilla para quien la busca.'] });
     addNPC({ name: 'Pescador Goro', at: [-12.0, 118.4], yaw: Math.PI / 2, idleAct: 'fish', fixedAct: true, seed: 2, cols: { body: '#4f6a5a', obi: '#3a2a22' }, hat: 'kasa', rod: true, lookAt: false, lines: ['Shh… los peces del estanque son muy desconfiados.', 'Dicen que los koi del río remontaron la cascada y se convirtieron en dragones. Yo solo quiero uno para la cena.'] });
     addNPC({ name: 'Tendera Mei', at: at(236, 10.5), yaw: Math.atan2(-Math.cos(236 * Math.PI / 180), -Math.sin(236 * Math.PI / 180)), idleAct: 'talk', seed: 3, lookAt: true, cols: { body: '#2d3654', obi: '#c23a2c' }, pin: '#ffd27a', lines: ['¡Bienvenido a la tienda! Ahora mismo solo vendo té y conversación.', 'Cuando consigas pétalos de alma derrotando rōnin, guárdalos bien: si caes, se quedan donde caíste hasta que vuelvas a por ellos.'] });
     // viajeros por los caminos
@@ -5983,8 +6140,8 @@ void main(){ float x = abs(vC.x - .5) * 2.; float a = (1. - x * x) * smoothstep(
     ENEMY_SPOTS.forEach((p, i) => spawnEnemy(p[0], p[1], i));
     // puntos de interacción especiales: verja de Ouro y ascensor del palacio
     const OE = ZONES.ouro.entrance;
-    INTERACT.push({ x: -122, y: H(-122, -163.5), z: -163.5, r: 3, cave: false, label: 'Cruzar la verja de la bóveda', fn: () => fadeTo(() => { PL.cave = true; const a = Math.atan2(OURO.z - OE.z, OURO.x - OE.x); PL.x = OE.x + Math.cos(a) * 2.5; PL.z = OE.z + Math.sin(a) * 2.5; PL.y = caveFloorY(PL.x, PL.z); PL.yaw = Math.atan2(Math.cos(a), Math.sin(a)); PL.vy = 0; snapCamera(); }) });
-    INTERACT.push({ x: OE.x, y: OE.y, z: OE.z, r: 3.4, cave: true, label: 'Salir de la bóveda', fn: () => fadeTo(() => { PL.cave = false; PL.x = -122; PL.z = -161.5; PL.y = H(PL.x, PL.z); PL.yaw = 0; PL.vy = 0; snapCamera(); }) });
+    INTERACT.push({ x: -122, y: H(-122, -163.5), z: -163.5, r: 6, cave: false, auto: true, label: 'Cruzar la verja de la bóveda', fn: () => fadeTo(() => { PL.cave = true; const a = Math.atan2(OURO.z - OE.z, OURO.x - OE.x); PL.x = OE.x + Math.cos(a) * 2.5; PL.z = OE.z + Math.sin(a) * 2.5; PL.y = caveFloorY(PL.x, PL.z); PL.yaw = Math.atan2(Math.cos(a), Math.sin(a)); PL.vy = 0; snapCamera(); }) });
+    INTERACT.push({ x: OE.x, y: OE.y, z: OE.z, r: 5, cave: true, label: 'Salir de la bóveda', fn: () => fadeTo(() => { PL.cave = false; PL.x = -122; PL.z = -161.5; PL.y = H(PL.x, PL.z); PL.yaw = 0; PL.vy = 0; snapCamera(); }) });
     const LY0 = H(-45, -285.6), LY1 = sites.zPalace.y;
     INTERACT.push({ x: -45, y: LY0, z: -285.6, r: 3, cave: false, label: 'Subir en el ascensor', fn: () => fadeTo(() => { PL.x = -38.4; PL.z = -289; PL.y = LY1; PL.yaw = Math.PI / 2; PL.vy = 0; snapCamera(); }) });
     INTERACT.push({ x: -38.4, y: LY1, z: -289, r: 2.4, cave: false, label: 'Bajar en el ascensor', fn: () => fadeTo(() => { PL.x = -45; PL.z = -285.4; PL.y = LY0; PL.yaw = 0; PL.vy = 0; snapCamera(); }) });
@@ -6025,7 +6182,7 @@ void main(){ float x = abs(vC.x - .5) * 2.; float a = (1. - x * x) * smoothstep(
   let elapsed = 0;
   function render(dt) {
     U.uTime.value = elapsed;
-    sky.position.copy(camera.position);
+    sky.position.copy(camera.position); updateDecks();
     rainMat.uniforms.uCam.value.copy(camera.position);
     rain.visible = cur.rain > .01; fireflies.visible = cur.fireflies > .01;
     for (const m of mists) m.visible = cur.mist > .02;
