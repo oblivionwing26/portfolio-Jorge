@@ -12,6 +12,23 @@ Es la base de un juego souls-like: un caballero recorre el valle a pie, habla co
 | ![El caballero con armadura laminada](docs/capturas/captura-caballero.png) | ![La aldea en la hora azul](docs/capturas/captura-aldea-noche.png) |
 | ![Combate contra un rōnin hueco](docs/capturas/captura-combate.png) | ![Escalinata en zigzag hacia el palacio](docs/capturas/captura-escalinata.png) |
 
+## Novedades de esta versión
+
+![Panorámica con cerezos, arces y ginkgos](docs/capturas/captura-panoramica-arboles.png)
+
+| | |
+|---|---|
+| ![Palacio de jade con dragones y leones guardianes](docs/capturas/captura-palacio-barroco.png) | ![Cristales de cuarzo en la bóveda de Ouro](docs/capturas/captura-cueva-cristales.png) |
+| ![La aldea ampliada en la hora azul](docs/capturas/captura-aldea-ampliada.png) | ![Rosetones, faroles y agujas en la Torre Celestial](docs/capturas/captura-torre-barroca.png) |
+
+- **Personajes humanos con captura de movimiento.** El caballero, los rōnin y los aldeanos usan un humano con esqueleto Mixamo (Xbot de los ejemplos de three.js) y sus animaciones reales (reposo, andar, correr, asentir). La armadura y la ropa se trasladan a sus huesos; los ataques, rodadas, saltos y oficios reorientan los huesos a partir de las poses procedurales.
+- **Árboles nuevos.** Copas de cerezo esponjosas (racimos que siempre miran a la cámara), un gran cerezo monumental al oeste de la aldea, arces japoneses rojos, ginkgos dorados y sauces llorones junto al río; las hojas caen revoloteando.
+- **Fauna y flora de Polyspoon.** Zorros y conejos con esqueleto y animaciones propias, hortensias azules y rosas, y setas en el bosque (diseños editables en `exports/`).
+- **Bóveda de Ouro.** Río y cascadas de lava animada (quema al pisarla), cúmulos de cuarzo azul y morado que brillan, y un portal luminoso en la verja de las ruinas: basta cruzarlo para entrar.
+- **Aldea ampliada.** Segundo anillo de nueve casas, puestos de mercado con toldos, farolillos y cuatro vecinos más.
+- **Arenas barrocas.** Torre Celestial con rosetones, volutas, faroles colgantes, guerreros dorados y agujas; arena celestial con faroles y estandartes; palacio de jade con columnas de dragón, leones guardianes, mandala dorado y mármol y jade con vetas; arena en ruinas con círculos grabados, columnas caídas, una cabeza colosal, raíces y braseros.
+- **Cielo.** Capa alta de nubes con relieve iluminado por el sol y sus sombras cruzando el valle.
+
 ## Aspecto visual
 
 - **Terreno suave** (sin facetas) que mezcla seis texturas reales según la pendiente, los caminos, el bosque, la orilla y la nieve, con proyección triplanar en las paredes de roca.

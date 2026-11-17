@@ -1130,7 +1130,14 @@ float tdH = .5;`).replace('#include <color_fragment>', `#include <color_fragment
   float warm = (vc.r - vc.b) / max(mxc, 1e-3);
   float wSt = (1. - smoothstep(.24, .38, warm)) * (1. - wPl);
   float wWd = clamp(1. - wPl - wSt, 0., 1.);
-  d = td_tri(tWood, pw * vec3(.42, .16, .42), aw) * wWd + mix(vec3(.5), td_tri(tPlaster, pw * .22, aw), .45) * wPl + td_tri(tStone, pw * .3, aw) * wSt;`;
+  d = td_tri(tWood, pw * vec3(.42, .16, .42), aw) * wWd + mix(vec3(.5), td_tri(tPlaster, pw * .22, aw), .45) * wPl + td_tri(tStone, pw * .3, aw) * wSt;
+  // mármol con vetas (piezas casi blancas) y jade con vetas claras (piezas verde azulado)
+  float marble = smoothstep(.7, .82, lum) * (1. - smoothstep(.06, .14, sat));
+  float vein = 1. - smoothstep(0., .035, abs(td_fbm(pw.xz * .35 + pw.y * .2 + td_fbm(pw.zy * .5) * 2.) - .5));
+  d = mix(d, vec3(.5) * (1. - .28 * vein) + vec3(.012), marble);
+  float jade = smoothstep(.25, .45, sat) * step(vc.r, vc.g) * smoothstep(.05, .2, vc.g - vc.r);
+  float jv = td_fbm(pw.xz * .6 + pw.y * .4 + td_fbm(pw.xy * .9) * 1.6);
+  d = mix(d, vec3(.5) * (.85 + .45 * smoothstep(.45, .75, jv)) + vec3(-.02, .03, .02) * vein, jade);`;
   const terrainMat = prep(new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .92, metalness: 0 }), 'terrain2', terrainSplat);
   const terrain = new THREE.Mesh(terrainGeo, terrainMat);
   terrain.receiveShadow = true;
@@ -2879,6 +2886,123 @@ void main(){ vec2 c = vUv - .5; float r = length(c * vec2(1., .8)), a = atan(c.y
     signpost(-128, -150, .3);
   }
   caveExtras();
+
+  /* ============================================================
+     ORNAMENTACIÓN BARROCA: volutas, molduras, rosetones, estatuas, faroles, agujas y guardianes
+     ============================================================ */
+  const OG = {
+    scroll: new THREE.TorusGeometry(.5, .06, 6, 18, Math.PI * 1.5),
+    ring: (r, t) => new THREE.TorusGeometry(r, t, 6, Math.max(24, Math.round(r * 10))),
+    bead: new THREE.SphereGeometry(1, 10, 8), petal: (() => { const g = new THREE.SphereGeometry(1, 8, 6); g.scale(.35, .1, 1); return g; })()
+  };
+  // voluta en «S» de oro (dos espirales opuestas)
+  function scroll(F, x, y, z, ry, s = 1, key = 'metal', col = PAL.gold) {
+    const G = F.sub(x, y, z, 0, ry, 0);
+    G.geo(key, col, OG.scroll, -.48 * s, 0, 0, 0, 0, 0, s); G.geo(key, col, OG.scroll, .48 * s, 0, 0, 0, 0, Math.PI, s);
+    G.geo(key, col, OG.bead, -.48 * s, 0, 0, 0, 0, 0, .09 * s); G.geo(key, col, OG.bead, .48 * s, 0, 0, 0, 0, 0, .09 * s);
+  }
+  function rosette(F, x, y, z, ry, s = 1) {
+    const G = F.sub(x, y, z, Math.PI / 2, ry, 0);
+    G.cyl('metal', PAL.gold, .32 * s, .08 * s, 0, 0, 0, 16);
+    for (let i = 0; i < 10; i++) { const a = i / 10 * TAU; G.geo('metal', i % 2 ? srgb('#e2be6a') : PAL.gold, OG.petal, Math.cos(a) * .45 * s, 0, Math.sin(a) * .45 * s, 0, Math.PI / 2 - a, 0, .5 * s); }
+    G.geo('goldglow', srgb('#ffd27a'), OG.bead, 0, .05 * s, 0, 0, 0, 0, .14 * s);
+  }
+  function hangLantern(F, x, y, z, L = 1.4, col = '#ffd27a', s = 1) {
+    F.cyl('metal', PAL.gold, .015 * s, L, x, y - L / 2, z, 4);
+    F.taper('metal', PAL.gold, .08 * s, .22 * s, .14 * s, x, y - L - .02, z, 8);
+    F.cyl('glow', srgb(col), .2 * s, .42 * s, x, y - L - .3 * s, z, 10);
+    F.taper('metal', PAL.gold, .22 * s, .06 * s, .12 * s, x, y - L - .56 * s, z, 8); F.geo('metal', PAL.gold, OG.bead, x, y - L - .66 * s, z, 0, 0, 0, .05 * s);
+  }
+  function spire(F, x, y, z, s = 1) { F.cyl('metal', PAL.gold, .12 * s, .3 * s, x, y + .15 * s, z, 8); F.geo('metal', PAL.gold, OG.bead, x, y + .45 * s, z, 0, 0, 0, .2 * s); F.taper('metal', PAL.gold, .01, .1 * s, 1.1 * s, x, y + 1.1 * s, z, 8); F.geo('goldglow', srgb('#ffe2a0'), OG.bead, x, y + 1.7 * s, z, 0, 0, 0, .06 * s); }
+  // león guardián (komainu) sobre pedestal
+  function komainu(F, x, y, z, ry, s = 1, col = PAL.stone, acc = PAL.gold) {
+    const G = F.sub(x, y, z, 0, ry, 0);
+    G.box('solid', PAL.stoneDark, 1.5 * s, .9 * s, 2.0 * s, 0, .45 * s, 0); G.box('metal', acc, 1.56 * s, .08 * s, 2.06 * s, 0, .88 * s, 0);
+    G.geo('solid', col, OG.bead, 0, 1.45 * s, -.2 * s, 0, 0, 0, .6 * s); G.box('solid', col, .8 * s, .9 * s, 1.1 * s, 0, 1.3 * s, -.25 * s);
+    for (const sx of [-1, 1]) { G.box('solid', col, .22 * s, .8 * s, .24 * s, sx * .28 * s, 1.25 * s, .35 * s); G.geo('solid', col, OG.bead, sx * .28 * s, .95 * s, .45 * s, 0, 0, 0, .15 * s); }
+    G.geo('solid', col, OG.bead, 0, 2.15 * s, .25 * s, 0, 0, 0, .5 * s);
+    for (let i = 0; i < 9; i++) { const a = i / 9 * TAU; G.geo('solid', col.clone().multiplyScalar(.9), OG.bead, Math.cos(a) * .45 * s, 2.15 * s + Math.sin(a) * .42 * s, .1 * s, 0, 0, 0, .2 * s); }
+    G.box('solid', col.clone().multiplyScalar(.85), .5 * s, .26 * s, .3 * s, 0, 2.0 * s, .7 * s); G.box('solid', srgb('#6a2a2a'), .32 * s, .06 * s, .1 * s, 0, 1.9 * s, .82 * s);
+    for (const sx of [-1, 1]) G.geo('goldglow', srgb('#ffcf6a'), OG.bead, sx * .17 * s, 2.25 * s, .66 * s, 0, 0, 0, .07 * s);
+    G.geo('solid', col, OG.bead, 0, 1.75 * s, -.85 * s, 0, 0, 0, .28 * s); G.col(0, 1.1 * s, 0, .8 * s, 1.1 * s, 1.05 * s);
+  }
+  // dragón de jade enroscado en una columna
+  function dragonPillar(F, x, y, z, h, R = .9) {
+    const pts = []; for (let i = 0; i <= 40; i++) { const t = i / 40, a = t * TAU * 2.2; pts.push(new V3(F.m.elements[12] + x + Math.cos(a) * R, F.m.elements[13] + y + .4 + t * (h - 1.2), F.m.elements[14] + z + Math.sin(a) * R)); }
+    const cv = new THREE.CatmullRomCurve3(pts), tg = new THREE.TubeGeometry(cv, 120, .26, 8, false), pa = tg.attributes.position;
+    for (let i = 0; i <= 120; i++) { const t = i / 120, k = .55 + .45 * Math.sin(Math.min(1, t * 1.2) * Math.PI) + (t > .92 ? 1.6 * (t - .92) / .08 : 0); const c = cv.getPointAt(t); for (let j = 0; j <= 8; j++) { const v = i * 9 + j; pa.setXYZ(v, c.x + (pa.getX(v) - c.x) * k, c.y + (pa.getY(v) - c.y) * k, c.z + (pa.getZ(v) - c.z) * k); } }
+    tg.computeVertexNormals(); addGeo('solid', tg, new THREE.Matrix4(), PAL.jade, .03);
+    for (let i = 2; i < 40; i += 2) { const p = cv.getPointAt(i / 40); Frame.at(p.x, p.y + .2, p.z, i).taper('metal', PAL.gold, .02, .1, .3, 0, 0, 0, 4, 0, 0, .4); }
+    const hp = cv.getPointAt(1), hd = cv.getTangentAt(1); const Hd = Frame.at(hp.x, hp.y, hp.z, Math.atan2(hd.x, hd.z));
+    Hd.box('solid', PAL.jade, .55, .5, .9, 0, 0, .2); Hd.box('solid', PAL.jadeDark, .4, .18, .6, 0, -.2, .45); for (const sx of [-1, 1]) { Hd.taper('metal', PAL.gold, .02, .08, .7, sx * .2, .4, -.1, 5, -.6, 0, sx * .3); Hd.geo('goldglow', srgb('#9dffd9'), OG.bead, sx * .18, .12, .52, 0, 0, 0, .06); }
+    for (let i = 0; i < 6; i++) Hd.taper('metal', PAL.gold, .01, .05, .5, zrand(-.2, .2), .1, -.3 - i * .08, 4, -1.2, 0, 0);
+  }
+  function ornaments() {
+    // ---------- Torre Celestial: barroco en cada cuerpo ----------
+    const T = Frame.at(CT.x, CT.y, CT.z, 0), tiers = [[22, 26, 20], [17, 28, 16], [13, 26, 12], [10, 20, 10]];
+    let y0 = .25;
+    tiers.forEach(([r, h, n], ti) => {
+      const colH = h * .66, spring = y0 + 1.2 + colH + .35;
+      for (const yy of [y0 + 1.95, y0 + h - 2.0, spring - .2]) T.geo('metal', PAL.gold, OG.ring(r * .93, .12), 0, yy, 0, Math.PI / 2, 0, 0);
+      T.geo('solid', MS, OG.ring(r + 1.45, .35), 0, y0 + h - 1.55, 0, Math.PI / 2, 0, 0);
+      for (let i = 0; i < n; i++) {
+        const ca = i / n * TAU, am = (i + .5) / n * TAU, rm = r * Math.cos(Math.PI / n) + .7, half = r * Math.sin(Math.PI / n), rise = Math.min(half * .9, 3.6);
+        // rosetón en la clave del arco y volutas a los lados
+        rosette(T, Math.cos(am) * (rm + .05), spring + rise + .15, Math.sin(am) * (rm + .05), -am + Math.PI / 2, 1.1);
+        scroll(T, Math.cos(am) * (rm + .1), spring + rise + 1.0, Math.sin(am) * (rm + .1), -am - Math.PI / 2, .9);
+        // estatuilla dorada en cada columna y farol colgante bajo el arco
+        const cx = Math.cos(ca) * (r + .9), cz = Math.sin(ca) * (r + .9);
+        if (ti < 3) { T.box('solid', MD, .9, .3, .9, cx, y0 + 1.95, cz, 0, -ca, 0); warrior(Frame.at(CT.x + cx, CT.y + y0 + 2.1, CT.z + cz, Math.PI / 2 - ca, .42), { kneel: i % 2 === 0, bow: true }); }
+        hangLantern(T, Math.cos(am) * (r + .2), spring + rise - .4, Math.sin(am) * (r + .2), 1.1 + (i % 2) * .5);
+        // agujas sobre la cornisa
+        spire(T, Math.cos(ca) * (r + 1.7), y0 + h + .1, Math.sin(ca) * (r + 1.7), 1.1);
+      }
+      y0 += h + 2.2;
+    });
+    // pináculo coronado con halo
+    T.geo('goldglow', srgb('#ffe0a0'), OG.ring(6, .14), 0, CT.ha - CT.y + 9, 0, Math.PI / 2, 0, 0);
+    // ---------- Arena celestial: faroles dorados, estandartes y anillos flotantes ----------
+    const A = Frame.at(CT.x, CT.ha, CT.z, 0);
+    for (let i = 0; i < 24; i++) {
+      const a = i / 24 * TAU + TAU / 48; if (Math.abs(((a - Math.PI) + TAU * 1.5) % TAU - Math.PI) < .25 || Math.abs(((a - Math.PI * 1.5) + TAU * 1.5) % TAU - Math.PI) < .25) continue;
+      const x = Math.cos(a) * 30.6, z = Math.sin(a) * 30.6, L = A.sub(x, .2, z, 0, -a, 0);
+      L.box('solid', MW, .5, .3, .5, 0, .15, 0); L.cyl('solid', MW, .12, 2.4, 0, 1.5, 0, 10); L.geo('metal', PAL.gold, OG.ring(.18, .04), 0, 2.4, 0, Math.PI / 2, 0, 0);
+      L.cyl('glow', srgb('#ffe2a0'), .22, .5, 0, 2.95, 0, 8); L.taper('metal', PAL.gold, .02, .36, .4, 0, 3.4, 0, 8); spire(L, 0, 3.55, 0, .5);
+      if (i % 3 === 0) { L.box('metal', PAL.gold, .06, 3.6, .06, .8, 2, 0); L.box('cloth', srgb('#f4ecd8'), .03, 2.4, .9, .8, 2.3, .45); L.box('metal', PAL.gold, .04, .1, .95, .8, 1.1, .45); L.box('cloth', srgb('#c9a24e'), .035, .5, .4, .8, 2.4, .45); }
+      if (i % 2 === 0) pointLights.push({ x: CT.x + x, y: CT.ha + 3.2, z: CT.z + z, k: .3, col: 0xffdca0 });
+    }
+    for (let i = 0; i < 16; i++) { const a = i / 16 * TAU; scroll(A, Math.cos(a) * 18.5, .25, Math.sin(a) * 18.5, -a, 1.2); }
+    for (let i = 0; i < 8; i++) { const a = i / 8 * TAU; rosette(A, Math.cos(a) * 11.6, .3, Math.sin(a) * 11.6, 0, 1.6); }
+    // ---------- Palacio de jade ----------
+    const PX = -12, PZ = -294, Y = sites.zPalace.y, P = Frame.at(PX, Y, PZ, 0), AZ = 13;
+    for (const sx of [-1, 1]) { komainu(P, sx * 5.2, .3, 27.6, Math.PI, 1.15, PAL.marble, PAL.gold); dragonPillar(P, sx * 3.5, 0, 24.6, 7.2, .82); }
+    for (const sx of [-1, 1]) { komainu(P, sx * 10.5, .3, AZ - 12.5, 0, .85, srgb('#7fd6b4'), PAL.gold); }
+    // farolillos colgantes a lo largo de los aleros del salón y estandartes de jade
+    for (let i = 0; i < 9; i++) { const x = -10.4 + i * 2.6; hangLantern(P, x, 2.8 + 5.2 + .2, -13 + 5.9, 1.2, i % 2 ? '#9dffd9' : '#ffd27a', 1); }
+    for (const sx of [-1, 1]) for (let k = 0; k < 3; k++) { const x = sx * (7 + k * 2.6), z = 7.2; P.box('metal', PAL.gold, .08, 5.2, .08, x, 2.6 + 2.6, z); P.box('cloth', PAL.jadeDark, .9, 3.2, .03, x + .5, 5.2, z); P.box('metal', PAL.gold, .95, .08, .05, x + .5, 6.8, z); P.geo('goldglow', srgb('#9dffd9'), OG.bead, x + .5, 5.4, z + .03, 0, 0, 0, .14); }
+    // mandala de jade y oro en la arena del palacio
+    for (let i = 0; i < 24; i++) { const a = i / 24 * TAU; scroll(P, Math.cos(a) * 9.5, .55, AZ + Math.sin(a) * 9.5, -a, .8); }
+    for (let i = 0; i < 12; i++) { const a = i / 12 * TAU; rosette(P, Math.cos(a) * 4, .56, AZ + Math.sin(a) * 4, 0, 1); }
+    P.geo('metal', PAL.gold, OG.ring(11, .1), 0, .55, AZ, Math.PI / 2, 0, 0); P.geo('goldglow', PAL.jadeGlow, OG.ring(2.4, .12), 0, .58, AZ, Math.PI / 2, 0, 0);
+    // remates dorados en los caballetes (shachihoko) y agujas en la balaustrada
+    for (const sx of [-1, 1]) { const S = P.sub(sx * 6.4, 2.8 + 9.0 + 3.6, -13, 0, sx > 0 ? 0 : Math.PI, 0); S.box('metal', PAL.gold, .4, .9, .5, 0, .4, 0, 0, 0, .3); S.taper('metal', PAL.gold, .02, .3, .8, .2, 1.0, 0, 5, 0, 0, -.8); S.geo('metal', PAL.gold, OG.bead, 0, .2, .25, 0, 0, 0, .18); }
+    for (let i = 0; i < 12; i++) spire(P, -14.8 + (i % 6) * 5.9 * (i < 6 ? 1 : 1), 3.8, i < 6 ? -12 + 7.3 : -12 - 7.3, .5);
+    pointLights.push({ x: PX, y: Y + 4, z: PZ + 24, k: .8, col: 0x9dffd9 });
+    // ---------- Arena en ruinas: suelo circular grabado, columnas caídas, raíces, cabeza colosal y braseros ----------
+    const C = ZONES.ruins, RY = sites.zRuins.y, Rf = Frame.at(C.x, RY, C.z, 0);
+    for (let k = 0; k < 3; k++) { const r = 5 + k * 4.2, n = Math.round(TAU * r / 1.5); for (let i = 0; i < n; i++) { if (zr() < .12) continue; const a = i / n * TAU; Rf.box('solid', PAL.stone.clone().lerp(PAL.stoneMoss, zr() * .6).lerp(PAL.stoneDark, zr() * .4), TAU * r / n - .08, .14, 1.3, Math.cos(a) * r, .13, Math.sin(a) * r, zrand(-.03, .03), -a + Math.PI / 2, zrand(-.03, .03), .04); } }
+    for (let i = 0; i < 12; i++) { const a = i / 12 * TAU; Rf.box('goldglow', srgb('#7fd8ff'), .9, .02, .1, Math.cos(a) * 7, .21, Math.sin(a) * 7, 0, -a, 0); Rf.box('goldglow', srgb('#7fd8ff'), .1, .02, .5, Math.cos(a) * 11.3, .21, Math.sin(a) * 11.3, 0, -a, 0); }
+    Rf.cyl('solid', PAL.stoneDark, 2.6, .3, 0, .15, 0, 24); Rf.cyl('solid', PAL.stoneMoss, 2.2, .1, 0, .32, 0, 24); rosette(Rf, 0, .4, 0, 0, 2.2);
+    // columnas derribadas y tambores sueltos
+    for (const [x, z, a, L] of [[-9, 8, .4, 6], [10, -6, 2.1, 5], [-11, -9, 1.2, 4.5], [7, 11, 2.8, 5.5]]) { const G = Rf.sub(x, .5, z, 0, a, 0); for (let k = 0; k < Math.round(L / 1.1); k++) G.cyl('solid', PAL.stone.clone().lerp(PAL.stoneMoss, zr() * .7), .5, 1.0, k * 1.12 - L / 2, 0, zrand(-.1, .1), 14, 0, zrand(-.1, .1), Math.PI / 2 + zrand(-.06, .06)); G.col(0, 0, 0, L / 2, .5, .55); }
+    // cabeza colosal de piedra medio hundida
+    { const Hh = Rf.sub(-13, -.6, 3, .2, 1.2, .3); Hh.geo('solid', PAL.stone.clone().lerp(PAL.stoneMoss, .4), OG.bead, 0, 1.6, 0, 0, 0, 0, 2); Hh.box('solid', PAL.stoneDark, 2.6, .5, .6, 0, 2.2, 1.75); Hh.box('solid', PAL.stone, .6, 1.2, .6, 0, 1.6, 1.95, .2, 0, 0); for (const sx of [-1, 1]) { Hh.box('solid', PAL.black, .6, .14, .2, sx * .7, 2.1, 1.92); Hh.box('solid', PAL.stoneDark, .5, 1.4, .5, sx * 1.95, 1.6, .2); } Hh.box('solid', PAL.stoneDark, 1.2, .2, .3, 0, 1.0, 1.9); for (let i = 0; i < 14; i++) { const a = i / 14 * TAU; Hh.geo('solid', PAL.stoneMoss, OG.bead, Math.cos(a) * 1.3, 3.4 + Math.sin(a) * .25, Math.sin(a) * 1.3 - .3, 0, 0, 0, .45); } Hh.col(0, 1.6, 0, 2, 1.8, 2); }
+    // raíces que trepan por el pavimento
+    for (let i = 0; i < 7; i++) { const a = zr() * TAU, r0 = 16, r1 = 9 + zr() * 4, p0 = [C.x + Math.cos(a) * r0, RY + .3, C.z + Math.sin(a) * r0], p2 = [C.x + Math.cos(a + .3) * r1, RY + .1, C.z + Math.sin(a + .3) * r1], p1 = [(p0[0] + p2[0]) / 2, RY + .7, (p0[2] + p2[2]) / 2]; rootTube([p0, p1, p2], .45, .06, srgb('#4c4337')); }
+    // braseros encendidos en el borde
+    for (let i = 0; i < 6; i++) { const a = i / 6 * TAU + .26; brazier(C.x + Math.cos(a) * 15.6, C.z + Math.sin(a) * 15.6, RY, .5); }
+  }
+  ornaments();
 
   /* ============================================================
      VIDA Y DETALLE: hogueras, arrozales, puesto de té, bambú y orillas
