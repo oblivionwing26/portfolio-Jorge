@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "family": "stylized-fox",
+  "familyVersion": "1.1.0",
+  "requested": {},
+  "applied": {
+    "bodyLength": 0.44,
+    "heightRatio": 0.8,
+    "chestRatio": 0.34,
+    "headRatio": 0.36,
+    "earRatio": 0.48,
+    "muzzleRatio": 0.45,
+    "tailRatio": 1.05,
+    "tailFullness": 0.16,
+    "color.fur": "#b95b32",
+    "color.cream": "#eadbc4",
+    "color.dark": "#332c2a"
+  }
+}

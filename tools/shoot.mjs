@@ -31,6 +31,12 @@ await page.route('https://fonts.gstatic.com/**', r => r.fulfill({ status: 404, b
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const doc = html;
 await page.route('http://local.test/', r => r.fulfill({ status: 200, contentType: 'text/html', body: doc }));
+await page.route('http://local.test/assets/**', async (route) => {
+  const rel = decodeURIComponent(new URL(route.request().url()).pathname.slice(1));
+  const f = new URL('../' + rel, import.meta.url);
+  if (fs.existsSync(f)) await route.fulfill({ status: 200, contentType: rel.endsWith('.webp') ? 'image/webp' : rel.endsWith('.glb') ? 'model/gltf-binary' : 'application/octet-stream', body: fs.readFileSync(f) });
+  else await route.fulfill({ status: 404, body: 'nf' });
+});
 const t0 = Date.now();
 await page.goto('http://local.test/');
 try {
@@ -43,6 +49,10 @@ for (const a of actions) {
   if (a[0] === 'wait') await page.waitForTimeout(a[1]);
   else if (a[0] === 'eval') { try { const r = await page.evaluate(a[1]); if (r !== undefined) logs.push('eval: ' + JSON.stringify(r)); } catch (e) { logs.push('eval error ' + e.message); } }
   else if (a[0] === 'click') await page.click(a[1]);
+  else if (a[0] === 'down') await page.keyboard.down(a[1]);
+  else if (a[0] === 'up') await page.keyboard.up(a[1]);
+  else if (a[0] === 'press') await page.keyboard.press(a[1], { delay: a[2] || 30 });
+  else if (a[0] === 'mouse') { await page.mouse.move(a[1], a[2]); await page.mouse.down({ button: a[3] || 'left' }); await page.mouse.up({ button: a[3] || 'left' }); }
   else if (a[0] === 'shot') { await page.screenshot({ path: `shots/${out}-${a[1]}.png`, timeout: 300000, animations: 'allow', caret: 'initial' }); logs.push('shot ' + a[1]); }
 }
 console.log(logs.join('\n'));

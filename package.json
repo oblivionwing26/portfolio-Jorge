@@ -1,8 +1,8 @@
 {
   "name": "valle-de-los-cerezos",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
-  "description": "Mundo 3D procedural de un valle japonés de cerezos (Three.js), base para un juego souls-like con un caballero y arenas de jefes.",
+  "description": "Mundo 3D procedural de un valle japonés de cerezos (Three.js), con un caballero jugable, habitantes, rōnin y combate souls-like.",
   "type": "module",
   "scripts": {
     "start": "npx --yes serve -l 5173 .",

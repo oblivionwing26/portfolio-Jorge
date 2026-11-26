@@ -1,0 +1,1370 @@
+{
+  "version": 2,
+  "skills": {
+    "adopt": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/adopt/SKILL.md",
+      "computedHash": "4a78b858c3de729a746bd0b11c8928713aa117ffcab403d43614c38bd79377bf"
+    },
+    "alpha-cutout": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/alpha-cutout/SKILL.md",
+      "computedHash": "1aff37e67ecc43108b0f5ae7d0999731af0440394d768facacfa44ace1f0fd71"
+    },
+    "analog-found-footage-horror": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/analog-found-footage-horror/SKILL.md",
+      "computedHash": "29db864437b7297e7472adcaefa0a5f753957b8ba8803e338f2e676aaccbfe15"
+    },
+    "animation": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/animation/SKILL.md",
+      "computedHash": "a62e367790ee6c8f2c9e6e8f53bce5b1d2401fb0c6cab501da1834a45b7caa78"
+    },
+    "anime-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/anime-style/SKILL.md",
+      "computedHash": "e582f61fdbacd6c7705e4a9b132f0d37189a1daf9a046480767ff76fa4e74a57"
+    },
+    "apocalypse-worlds": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/apocalypse-worlds/SKILL.md",
+      "computedHash": "c6bc8fe28e60f37c6311acd881d7911d7df8067c93e3bbb9a856cdad06946d4f"
+    },
+    "architecture-decision": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/architecture-decision/SKILL.md",
+      "computedHash": "880595cbc9263bbff994acd4e4e769ed61f0a4d376dd78d63625f0f58c6667ea"
+    },
+    "architecture-review": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/architecture-review/SKILL.md",
+      "computedHash": "d7ac2a2b2b482da49542ca19a1a8f27c834124abd1ffd28b1333359db4ab6cff"
+    },
+    "archviz": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/archviz/SKILL.md",
+      "computedHash": "427d3221cdb459756c0fb0b8fdf677680b0e09a4d38429fbec99c73850f21f4d"
+    },
+    "art-bible": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/art-bible/SKILL.md",
+      "computedHash": "c4305c59c124e896fb13e28bb31625781b8317940108d02469a0b71271770411"
+    },
+    "asset-audit": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/asset-audit/SKILL.md",
+      "computedHash": "0158fcd0c2fe89de61189ad4d0f4d099b0d235577c44a27c1f6c881eff990a70"
+    },
+    "asset-optimization": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/asset-optimization/SKILL.md",
+      "computedHash": "b245a25d916e541dcdfeab9ff909aeab3a1caf2a9e5d405370464395c8a9e41b"
+    },
+    "asset-spec": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/asset-spec/SKILL.md",
+      "computedHash": "705e5ee04e56d69308cce69bd37b0e34247edd7e6d249a21653cad536434cec5"
+    },
+    "balance-check": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/balance-check/SKILL.md",
+      "computedHash": "4884754f2f7acec3b36be2d4853d5e8afa750a0b5bbdcc173d385a07c5000b1b"
+    },
+    "biome-worlds": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/biome-worlds/SKILL.md",
+      "computedHash": "179287817374a873023714b4fdddc1f4e49503843adf27cb093cd27bedb678a3"
+    },
+    "blender-modeler": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/blender-modeler/SKILL.md",
+      "computedHash": "3d2625570d7371eeb8fcf41c23435481881866d5e7a40997f93db6a41dcf1afa"
+    },
+    "body-horror-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/body-horror-style/SKILL.md",
+      "computedHash": "29cf1d7517cfccf2eead90717c1030deb433f98521fa5a2c9b498960bafda0d9"
+    },
+    "brainstorm": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/brainstorm/SKILL.md",
+      "computedHash": "02bcf9296fc2528565ef1e0eda9a8f554a3c1803bf5f915a39146ecaf7c70d07"
+    },
+    "brutalist-mood": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/brutalist-mood/SKILL.md",
+      "computedHash": "fd4b640ed53e2a9c0545c3da27060db8125493ebaff900a234b3a25753432840"
+    },
+    "bug-report": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/bug-report/SKILL.md",
+      "computedHash": "63fb8301c1a06444569c381959f2b1630c6593b6e137f526cedbd91e9fff530b"
+    },
+    "bug-triage": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/bug-triage/SKILL.md",
+      "computedHash": "43f2c50482c84484659293f0f33f8240bf609e0151ead621ca46d761843d53f8"
+    },
+    "camera-cinematography": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/camera-cinematography/SKILL.md",
+      "computedHash": "8c6b0838ea2173a0b11ff9ceb707b6f0cb8c8ea37ce751e77ca2332546d27ed9"
+    },
+    "camera-systems": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/disciplines/camera-systems/SKILL.md",
+      "computedHash": "eee6290a3ef6c74f2e0a4d4aac8545801201ac24fe01daf1684d46b6434fcfd7"
+    },
+    "cartoon-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/cartoon-style/SKILL.md",
+      "computedHash": "b919c0f0bf5dc58790b2f0e10ba98e1837d1fcd28ade905631b95e3f4be7694b"
+    },
+    "changelog": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/changelog/SKILL.md",
+      "computedHash": "9a90982a8784a18d09f999304c421ae849c0637089a52a8db5c997c56ed05377"
+    },
+    "character-archetypes": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/character-archetypes/SKILL.md",
+      "computedHash": "4884851ba365dd73111d6b92b60217a1103923f9513b5f1fb1530ed3e71dd9f6"
+    },
+    "character-artist": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/character-artist/SKILL.md",
+      "computedHash": "759f7d1e6798cee05d4fea86d9172b5e7c3bb644cca85a17d7eee35b18a45f26"
+    },
+    "chibi-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/chibi-style/SKILL.md",
+      "computedHash": "b2e2a6de71439bb3ae1fc500773bc402338973f3be2299a6c4b622ac73f2c723"
+    },
+    "cli-anything-blender": {
+      "source": "HKUDS/CLI-Anything",
+      "commit": "34f519533bc175d2fe287ab8316b0dd99bb9cc43",
+      "sourceType": "github",
+      "skillPath": "skills/cli-anything-blender/SKILL.md",
+      "computedHash": "526dec1e61da472da08259e74be0d4387d679ce43dcd8a19560c091075e6545c"
+    },
+    "cloth-sim": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/cloth-sim/SKILL.md",
+      "computedHash": "f0591c99e9acde425310c5f7b0a44a13f66ededd9a4cc3bb080cf3b970451ab1"
+    },
+    "code-review": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/code-review/SKILL.md",
+      "computedHash": "20fb67790b09cfdbe933dc283e915b8acbc9077c1f2d77839cac3eb2c84545cd"
+    },
+    "codeart2d": {
+      "source": "0x0funky/agent-sprite-forge",
+      "commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "sourceType": "github",
+      "skillPath": "skills/codeart2d/SKILL.md",
+      "computedHash": "ec9cbb6096a02dc837b9e4fc5997711f657ce3ea04682c8822c2a69abcb3f994"
+    },
+    "collision-proxy": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/collision-proxy/SKILL.md",
+      "computedHash": "a6246f03c30cc4c9df61bed9f193fcf2afd676e0acd02b9eeccbfcbb71761081"
+    },
+    "comic-book-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/comic-book-style/SKILL.md",
+      "computedHash": "b7f7f2f769c65a83d592b0a61184a3f3ad7798647acd13b17c7fe14b6fb53d63"
+    },
+    "compositing": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/compositing/SKILL.md",
+      "computedHash": "54b9ccf2963c29d939156637b513ad9d42f697858b34e5d7ccd6641a5f9a0586"
+    },
+    "consistency-check": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/consistency-check/SKILL.md",
+      "computedHash": "05038736ea5a80cd5fa45192bf4bb62c927332b461daf33cec8ec24f443b73d1"
+    },
+    "content-audit": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/content-audit/SKILL.md",
+      "computedHash": "545d5653a2794d2ab3a08dd4045cbf30c6bb1653df65b3e50edc1970bbb1155a"
+    },
+    "cosmic-eldritch-horror": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/cosmic-eldritch-horror/SKILL.md",
+      "computedHash": "b81804486968a95e939a70a2b2d065c8053ac0431ae78a04a01e985bb8be57cf"
+    },
+    "cozy-wholesome-mood": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/cozy-wholesome-mood/SKILL.md",
+      "computedHash": "6adbbcc994dc1a90e1d2531b9522d956ef522a356d235ec12859334901293224"
+    },
+    "create-architecture": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/create-architecture/SKILL.md",
+      "computedHash": "c55e68ba28aee4c0f47d85533d2d732238073acd7c9d78d803ddecd71abd08a1"
+    },
+    "create-control-manifest": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/create-control-manifest/SKILL.md",
+      "computedHash": "897c719cd58d8ac38b90e60770007c83aae5e6bfb96ae61ead15c2ecd746d178"
+    },
+    "create-epics": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/create-epics/SKILL.md",
+      "computedHash": "7c5c36c7b83b126e614328544c90cd0bb16275863cca6a89444a8b2ee89ed86b"
+    },
+    "create-game-assets": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/disciplines/create-game-assets/SKILL.md",
+      "computedHash": "9fa157004c040ab3de38ac8cc3a7a49238821fcde7e384e0b94b10657c6e6a53"
+    },
+    "create-stories": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/create-stories/SKILL.md",
+      "computedHash": "0deaf543e6a08fb25ce15ebc87cfca6f751f89a4c18ff0d13c75103b99dd34d1"
+    },
+    "creature-artist": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/creature-artist/SKILL.md",
+      "computedHash": "b87e7ed92cf9a40c6b93a530bf5c36cea8c573ca5201713679220985fec2b389"
+    },
+    "cursor-rig": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/cursor-rig/SKILL.md",
+      "computedHash": "e01ddbed9359b6f9a2171b0e1e6c7bf3918af166b54ba0b09a3e77fc2c82de07"
+    },
+    "cut": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/cut/SKILL.md",
+      "computedHash": "87604238730519e056747b8960bbd20165453c3c59f21d654bd8d7f2db318e32"
+    },
+    "dark-gritty-mood": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/dark-gritty-mood/SKILL.md",
+      "computedHash": "e559bc9799f8654f3fd4e1046cf460e2620a45725e4a048e41af28610b68c46d"
+    },
+    "day-one-patch": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/day-one-patch/SKILL.md",
+      "computedHash": "a7d7d646138d82750ddbeb143941c941bce4438305a97deccbac71f71e478809"
+    },
+    "design-review": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/design-review/SKILL.md",
+      "computedHash": "9bc3c175859f71f86718e8ee9c7a77a7292aa4bedc79f5fa4b62e6299e71ae31"
+    },
+    "design-system": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/design-system/SKILL.md",
+      "computedHash": "e698a700e3dc2c46996347797eeed224af266a209f1d3b00a08955ac3769291f"
+    },
+    "dev-story": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/dev-story/SKILL.md",
+      "computedHash": "4a605fa621c72f911bf5c41f88ba7d5fece7387ad3a270ada2f4571d100c1e65"
+    },
+    "dream-surreal-mood": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/dream-surreal-mood/SKILL.md",
+      "computedHash": "babaa59f4b47eae05db25c22c16da5a9207d1518bd0bd0d50000253f48a4b914"
+    },
+    "dream-weirdcore-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/dream-weirdcore-style/SKILL.md",
+      "computedHash": "d6c666e19b93aa18c0b4638f031a520fe87980793351c7450f05e95bbfd6146c"
+    },
+    "environment-artist": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/environment-artist/SKILL.md",
+      "computedHash": "98fe3c3e72ba29f5f7169f738331f1cddc746f863bd0e715fcfdd2bab2d5853b"
+    },
+    "estimate": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/estimate/SKILL.md",
+      "computedHash": "ff8b56ea420b87a9f56591ce3ed6406f2adaff79506adce040ce16b771ee22a6"
+    },
+    "exploded-view": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/exploded-view/SKILL.md",
+      "computedHash": "d38867e16185466d3d77ce5afc310558cc196766cbaa2ffd8dd5e9c0d5894f85"
+    },
+    "export-pipeline": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/export-pipeline/SKILL.md",
+      "computedHash": "476d639a628da3a3657ddb9cc2390baf4539aa4aa9eb50cb263ac35e89431284"
+    },
+    "fal-3d": {
+      "source": "nexu-io/open-design",
+      "commit": "f2ecaa3f88e1eba001379ea845e7b7754310ea6d",
+      "sourceType": "github",
+      "skillPath": "skills/fal-3d/SKILL.md",
+      "computedHash": "511f62db252467bb7733dbe8f49440eb2b6058fdc848d7fa5e0b249195de17b2"
+    },
+    "fal-assets": {
+      "source": "rehan-remade/universal-modder",
+      "commit": "3c4ac6c38e411b8c543bce217eae197039516bfc",
+      "sourceType": "github",
+      "skillPath": "skills/fal-assets/SKILL.md",
+      "computedHash": "0daaf93daeb86b353ec27ea1f8420c9f14f48bf9a94a06ad41e9a86fb12f17b3"
+    },
+    "fantasy-worlds": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/fantasy-worlds/SKILL.md",
+      "computedHash": "123516de6de8bc2eb1beafecfdaee2cf006a48c5d66753a1536060fff261b8e6"
+    },
+    "folk-horror-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/folk-horror-style/SKILL.md",
+      "computedHash": "a072628cb9ca8e9e0a722a3de3ae23c4eaa4c5e5d547f9d160b9bda58118baaa"
+    },
+    "frame-capture": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/frame-capture/SKILL.md",
+      "computedHash": "0fe8cd9574c752366342b60288b3d86a0842e8a55fd2050ca2e68ec67a752c1c"
+    },
+    "frutiger-aero-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/frutiger-aero-style/SKILL.md",
+      "computedHash": "d59bb6a2286e096efebe56060ab12c88404e677b5fafde2361e9458a781d479e"
+    },
+    "game-feel": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/disciplines/game-feel/SKILL.md",
+      "computedHash": "f0a2becd199feabc7e8720f8f5626c84571ef763a0a5edefcdae8a039ce64338"
+    },
+    "gate-check": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/gate-check/SKILL.md",
+      "computedHash": "d5a81d0fbbcc1a7281ccebc3c3bb7395f1adf9f02d6c10a99efe6ada3f178f29"
+    },
+    "generate2dmap": {
+      "source": "0x0funky/agent-sprite-forge",
+      "commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "sourceType": "github",
+      "skillPath": "skills/generate2dmap/SKILL.md",
+      "computedHash": "b01d65bc5bf262b98a70e89643ae2a1740f4a1b183394a5d059e0a60f10284b7"
+    },
+    "generate2dmedia": {
+      "source": "0x0funky/agent-sprite-forge",
+      "commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "sourceType": "github",
+      "skillPath": "skills/generate2dmedia/SKILL.md",
+      "computedHash": "949b1d08713bd4dc3b1220575650bddd2c8ebb70c512dfcebdfad0f260d44579"
+    },
+    "generate2dsprite": {
+      "source": "0x0funky/agent-sprite-forge",
+      "commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "sourceType": "github",
+      "skillPath": "skills/generate2dsprite/SKILL.md",
+      "computedHash": "1deeacbf3b5005435def577054eda5af42645a762f7ee45ee579a0e9326b2ef7"
+    },
+    "genre-action-combat": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-action-combat/SKILL.md",
+      "computedHash": "bbbe591af53d7cf0a16c0600ee415818479033f8b2c993d3cb0a7e66f2c7b43a"
+    },
+    "genre-card-party-idle": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-card-party-idle/SKILL.md",
+      "computedHash": "ae8bee827eaa42b8b4d300986bf0245a3ccd363a252dbd98c1c349d04a525364"
+    },
+    "genre-metroidvania-roguelike": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-metroidvania-roguelike/SKILL.md",
+      "computedHash": "1da15381135a2d5434274ff90bf0848ffa4e4c5dbdbb7e8f90498aff972e8eae"
+    },
+    "genre-narrative-vn": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-narrative-vn/SKILL.md",
+      "computedHash": "8fc44315e4bd07a5f44d32326f7682847800f17e3201c7a85bb26fae44dd2dc9"
+    },
+    "genre-open-world-sandbox": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-open-world-sandbox/SKILL.md",
+      "computedHash": "4bb0544302e824f74fd71a7ef1c78b555df070db37832b94af33c75e18744816"
+    },
+    "genre-puzzle-platformer": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-puzzle-platformer/SKILL.md",
+      "computedHash": "be2e564f248d0dae254338d0c7b0f423764cd4c3039503a122e84c01c10c8967"
+    },
+    "genre-racing-sports": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-racing-sports/SKILL.md",
+      "computedHash": "f8268f51f8e45d326f35e2aa30b097515dd6c40a8621bb3e847d8cb5d8ce3bfe"
+    },
+    "genre-rpg": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-rpg/SKILL.md",
+      "computedHash": "81827dc48a678ecd07472053180201d85d43408044bbd736b575f4a33e7859d2"
+    },
+    "genre-shooter": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-shooter/SKILL.md",
+      "computedHash": "01298a4e88588f9d044b48066f7c94caafc89405b0ec0af27b6f62ea6408543d"
+    },
+    "genre-soulslike": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-soulslike/SKILL.md",
+      "computedHash": "ff21e97a0192d0e08bd27d10534a45c47c6345cbb55e63ea04f3e7189ca0b5c2"
+    },
+    "genre-stealth": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-stealth/SKILL.md",
+      "computedHash": "d48533177d501d373988339f9839d1cdc734417802a35d12126af2590e2f3909"
+    },
+    "genre-strategy-sim": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-strategy-sim/SKILL.md",
+      "computedHash": "2cabf48e16f5b5d29ecf9d516145f834477308cb620f55b8243ac7be07854caa"
+    },
+    "genre-survival": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/genre-survival/SKILL.md",
+      "computedHash": "3d8a76f9b4127fc847967a4af3210f20eb3e55c8299809e778d5ae2b244671b7"
+    },
+    "geometry-nodes": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/geometry-nodes/SKILL.md",
+      "computedHash": "f38bdf6fd0676315d843f4830d09a16c6cec78fee60ff2ba7353e4cdee010c39"
+    },
+    "godot-export": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/godot-export/SKILL.md",
+      "computedHash": "9d765752f6919c3c772b4b3c63ae3e6cda29f45825e0393a6d291b0f7e1db6f1"
+    },
+    "hair-groom": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/hair-groom/SKILL.md",
+      "computedHash": "5028eeff51f8b5a13e834db4433795b213d8df2d7a895a52eae68c0924e389ea"
+    },
+    "hand-painted-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/hand-painted-style/SKILL.md",
+      "computedHash": "452bb121571080d16b468b6160b43a7541d0bce9f13012269aa037f74074a567"
+    },
+    "hard-surface": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/hard-surface/SKILL.md",
+      "computedHash": "5a64e7f45211f61a7fe7eff6dd328ed67b721b96b87387c8eb42f0de5e805170"
+    },
+    "hd-2d-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/hd-2d-style/SKILL.md",
+      "computedHash": "a6130f4832e1e74c6d0e75c127ff0fb09a37dc96c4efef65883526aab5196b47"
+    },
+    "help": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/help/SKILL.md",
+      "computedHash": "0b646abc2c278690bcc1662116b225edcfd3c6dda3af26f358463d636fb97f4e"
+    },
+    "historical-worlds": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/historical-worlds/SKILL.md",
+      "computedHash": "59be90804f160b8d88a6c9c6b2c8052e8dd81b5cbf5becda8296228ea074687f"
+    },
+    "horror-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/horror-style/SKILL.md",
+      "computedHash": "a28f55dec06f33c651d462e4a4f638ff5ee1b395dd7feb40c30b0f4c55091cdc"
+    },
+    "hotfix": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/hotfix/SKILL.md",
+      "computedHash": "784c7b6ad3295e0a91614cc497d58b7e1e34487c370979ba51a4a4cf66b5274b"
+    },
+    "indie-horror-aesthetics": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/indie-horror-aesthetics/SKILL.md",
+      "computedHash": "c158834ec118ddb75d06cdbeafd0d428fe88ccf5c855643c3d20450642e271eb"
+    },
+    "isometric-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/isometric-style/SKILL.md",
+      "computedHash": "ea84f88c0e4e67ee3ac74f90a58141ecbdd4b9eee990f27f091f94b1aec14fc0"
+    },
+    "launch-checklist": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/launch-checklist/SKILL.md",
+      "computedHash": "74cede9068068f9f14920ac95a8f5ada641feee5813fbb2425496af08a28fab3"
+    },
+    "lighting": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/lighting/SKILL.md",
+      "computedHash": "b868f9cea192b69189c8672db6a2ab02fdcb481f7ada0c1af699d7170f1cea60"
+    },
+    "liminal-space-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/liminal-space-style/SKILL.md",
+      "computedHash": "030c30ca667052e7ee7815bf940c75a81d38b54152786f21abdf122a8ce119b1"
+    },
+    "localize": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/localize/SKILL.md",
+      "computedHash": "583b6147e94a5b094a4b73cadc45ffc09cf3e479dc18d03dfc0d679b80ad26ee"
+    },
+    "lod-pipeline": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/lod-pipeline/SKILL.md",
+      "computedHash": "dd9f2682d457ca7ed5d2f80a179964e6659782a5b146e34e0e814310f02f4890"
+    },
+    "lookdev": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/lookdev/SKILL.md",
+      "computedHash": "bc4e3059f533512226f5e925a9a9b86aa6f26487edbd54e448318bf274995fe1"
+    },
+    "lowpoly-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/lowpoly-style/SKILL.md",
+      "computedHash": "7fc2335bd79496dfbd32de8f74d7500814895c0f80a3e7ceba8447b10a816255"
+    },
+    "manga-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/manga-style/SKILL.md",
+      "computedHash": "312d8c478c24023b91ed234f1ed0e87407ec21213d18861048dabaf943c755ce"
+    },
+    "map-systems": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/map-systems/SKILL.md",
+      "computedHash": "c9420094cdebc3c976a3a59c259a113f98834ea2a3201d3baecf88b204fa1973"
+    },
+    "mascot-puppet-horror": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/mascot-puppet-horror/SKILL.md",
+      "computedHash": "1d831216e402937a928ab165d6ac66a58e40cc06a0292a159337ec951a54a547"
+    },
+    "materials": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/materials/SKILL.md",
+      "computedHash": "4574cdd5e559b9dd99a0e600e750b96967d683b30fd46e4915105ec19ac056ef"
+    },
+    "milestone-review": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/milestone-review/SKILL.md",
+      "computedHash": "b5bd390f6338b087f6cd1cb84cb74109cafd20496f0a40ccde83888bc91c68ec"
+    },
+    "minimalist-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/minimalist-style/SKILL.md",
+      "computedHash": "c815e4c898d2e62a9d59e24d56d6cec3bed32c794732ca1009db5c416237df57"
+    },
+    "motion-assets": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/motion-assets/SKILL.md",
+      "computedHash": "44fae00b504782e5989b08cbdce1d8657880096d7adb54f3b791d43d68c666f1"
+    },
+    "neon-retrofuturism": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/neon-retrofuturism/SKILL.md",
+      "computedHash": "90f3a6d5b33b4547aaab55f8a9f042caa4a3b0d1a8e381ec6f6dacdb190cc337"
+    },
+    "next-step": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/next-step/SKILL.md",
+      "computedHash": "94009f1f30a607a2351e989bc9ba01b12f31417e29b7a8fea6be97243d683d94"
+    },
+    "noir-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/noir-style/SKILL.md",
+      "computedHash": "73fb00c7f6be865272285a4a709f9eb1eb2b099e131d534af4132ed3e1b5c3bb"
+    },
+    "onboard": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/onboard/SKILL.md",
+      "computedHash": "9e852e873d3a24cd659f4e1aa22742bcf3781556751082fa0c6fa66f2083f142"
+    },
+    "painterly-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/painterly-style/SKILL.md",
+      "computedHash": "942da11e3003b23ec2fb74fb4bec6e16ae14307866def36dc20d08a09337aa7d"
+    },
+    "patch-notes": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/patch-notes/SKILL.md",
+      "computedHash": "d2ec28f8fa97bea4f784a2b51a403fc7a2de2d665a484debf0b0dcfe5af2685f"
+    },
+    "perf-profile": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/perf-profile/SKILL.md",
+      "computedHash": "fc0262b1c85af77f20264cf92f8ed27e6e5007374b5973e2c7580c8eb554d2a3"
+    },
+    "performance-optimization": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/disciplines/performance-optimization/SKILL.md",
+      "computedHash": "a73d59038c278242bef4e1d80c9b1657ac472de3d68db88164e93d5c00f80197"
+    },
+    "physics-sim": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/physics-sim/SKILL.md",
+      "computedHash": "537d68a566acbcb7b1b0fbbf7ec5ed31fb07de8d2863e77db6385a1880c416fc"
+    },
+    "pixel-art-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/pixel-art-style/SKILL.md",
+      "computedHash": "1fcdfd2e48ee5ca991a7613ee1e0debfc6f4bff351cc9ae3503278a048154019"
+    },
+    "playtest-report": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/playtest-report/SKILL.md",
+      "computedHash": "7aacdfedeae8f16b9ea8e04b6b47f534ea27ce5a6a3c3eb4a492845a2c08c097"
+    },
+    "procedural-modeling": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/procedural-modeling/SKILL.md",
+      "computedHash": "2c4f85fba8145c13930100a6b27e03c62ae6c3e8387cb7933d603dffab5fbb6e"
+    },
+    "project-settings": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/project-settings/SKILL.md",
+      "computedHash": "38d66415560a973d058c5dfec2ef89558099cd24b95f4dfb284869121553e43d"
+    },
+    "project-stage-detect": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/project-stage-detect/SKILL.md",
+      "computedHash": "2e01aa451a169d810ee76a0f36f4947f80cb3838f13db0862177339ee5d367e2"
+    },
+    "prop-artist": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/prop-artist/SKILL.md",
+      "computedHash": "57caef56216cf1341622dfafcd66abdc4834adc4dab5c9ffa8898ecf73dd1ca0"
+    },
+    "propagate-design-change": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/propagate-design-change/SKILL.md",
+      "computedHash": "1cfec2f01286a7b8595c825f4335059d1f67c0c70bd01dae22ed7cbe08f21c64"
+    },
+    "prototype": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/prototype/SKILL.md",
+      "computedHash": "6b7bb2709889804aa59ed7d69eb6db7e5df8a7956f1a82e9ad53cef5d01f40e3"
+    },
+    "psx-horror-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/psx-horror-style/SKILL.md",
+      "computedHash": "cfa6253ddf7560d52e785b6655cd2e4ea98c5a53b9f0b46c90b29c7f1dff1136"
+    },
+    "qa-plan": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/qa-plan/SKILL.md",
+      "computedHash": "7fe8f6478b07a6f6b7592fcf654d41669b03ca62ec17082117acf78e77a50506"
+    },
+    "qa-review": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/qa-review/SKILL.md",
+      "computedHash": "5b1189a553667f006318b2aafbee55c181748b247fe9ff6fda9aa84f2fcd9b05"
+    },
+    "quick-design": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/quick-design/SKILL.md",
+      "computedHash": "3fcdeceef5d507db45d40615fed5d20309646bc8720e3bbb1fdf30f2113c5679"
+    },
+    "realistic-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/realistic-style/SKILL.md",
+      "computedHash": "37fd0736735d989f6038cba459352ba11a87bf01552b62b73047888133879a7f"
+    },
+    "regression-suite": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/regression-suite/SKILL.md",
+      "computedHash": "fa36561726886b637801ba61e630cb17461105873616f0fd6757dc479dc75394"
+    },
+    "release-checklist": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/release-checklist/SKILL.md",
+      "computedHash": "294af0c267fbb81a17377d072b453f72459b89b35d5376f4f8dd9c11bbc8c00b"
+    },
+    "rendering": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/rendering/SKILL.md",
+      "computedHash": "c9d4a1d6942b547be04490fb25460abf694750b5d56b84ebb6a3ac07dd988026"
+    },
+    "retopology": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/retopology/SKILL.md",
+      "computedHash": "6783badc3e140fdef23cbe1a753b54d8bca2b20aba296f8de05528d72279c743"
+    },
+    "retro-16bit-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/retro-16bit-style/SKILL.md",
+      "computedHash": "7e4524fd44317430b1964b17f31df78da8ecaebda5435fb82a2a30967559863d"
+    },
+    "retro-8bit-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/retro-8bit-style/SKILL.md",
+      "computedHash": "0fa2c6605712ecf0e42562270349d9eadf3aedbcb20e15ae4bc700285c50bd33"
+    },
+    "retrospective": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/retrospective/SKILL.md",
+      "computedHash": "2817f671f34db506c8b7e377fa0bca52b22fef632ea14c43b76387ad76c8927f"
+    },
+    "reverse-document": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/reverse-document/SKILL.md",
+      "computedHash": "87865e59a9fc202e2ff86255fa555079fb92c040de1603b31d8f0131ad3a5287"
+    },
+    "review-all-gdds": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/review-all-gdds/SKILL.md",
+      "computedHash": "c7859d1c138787acbab77d89f36baa3ec69b3e7e28c18f951b6ef50f5cefd7f6"
+    },
+    "rigging": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/rigging/SKILL.md",
+      "computedHash": "40076496e897685d2c394a34058e12e60eed244d4de783120ec914353df74971"
+    },
+    "scene-assembly": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/scene-assembly/SKILL.md",
+      "computedHash": "8806364f9a289387fe47eda086fd1f0da14dacf5d77e71c64342f55ade6ef074"
+    },
+    "sci-fi-punk-worlds": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/sci-fi-punk-worlds/SKILL.md",
+      "computedHash": "3c732ee921f74f75558c90694cee312427871e165faa705742acefef9d62898c"
+    },
+    "scope-check": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/scope-check/SKILL.md",
+      "computedHash": "0eeeffabb6ddee4c233901860c6b2e5cf6f153b0b060982f2da5b30f4ac2fbe5"
+    },
+    "scroll-film": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/scroll-film/SKILL.md",
+      "computedHash": "74cea33c2ebb74a8b2f5a175bb732e3ca9fbff2cff500bf309a39f11f3c7a0d1"
+    },
+    "sculpting": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/sculpting/SKILL.md",
+      "computedHash": "f310b7c9790aee583c8e79e21aeb6d8ef16f90c6f2fb61522f688daf04066379"
+    },
+    "security-audit": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/security-audit/SKILL.md",
+      "computedHash": "9b2281445a76dcbdf5fd33c3e5212cba4a5f1fe50bf8e8dbefad2f710b8b793d"
+    },
+    "set-dressing": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/set-dressing/SKILL.md",
+      "computedHash": "fdd87b1574f3e751d18a004e66a1090521de7495e71642ce2cb8ea70ebbf2c6c"
+    },
+    "settings": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/settings/SKILL.md",
+      "computedHash": "a49cf49607342eebc712c135e0498f72836019a11bf166010ad5d57800549343"
+    },
+    "setup-engine": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/setup-engine/SKILL.md",
+      "computedHash": "795923db540412098aaca50f9e892589831bde8bbfbbe1b29e70954222e96184"
+    },
+    "shader-programming": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/disciplines/shader-programming/SKILL.md",
+      "computedHash": "f5722dbca5e9fa6a8954f79e7735ff244c22702f59b0b7c3f9f6bdd5beabba18"
+    },
+    "site-check": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/site-check/SKILL.md",
+      "computedHash": "022dbba61a3d482f6d8fd4d63f56249d66eeabf55139ff871c6f243294406045"
+    },
+    "skill-improve": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/skill-improve/SKILL.md",
+      "computedHash": "c5ae54809249a8d9dabcd88a5d1e0926fd93f31f9cd05f003e2f85a10e11c92c"
+    },
+    "skill-test": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/skill-test/SKILL.md",
+      "computedHash": "afb5c2ad119cd451682b3c43e5b8b50b32bd7c36d3fb5e0bdd07ba1140f9025b"
+    },
+    "smoke-check": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/smoke-check/SKILL.md",
+      "computedHash": "af1b46ebff1260247c9df8c9afc8261350af34f3e70112b7a4f3b5c345a77cd3"
+    },
+    "soak-test": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/soak-test/SKILL.md",
+      "computedHash": "95f0190d2ca42369bf18721ddbdb2dd54233d1dc95b884ca7399d7f8bc373c94"
+    },
+    "sprint-plan": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/sprint-plan/SKILL.md",
+      "computedHash": "d5c5cd0f7ab985d4a5a2a4b35c44754b810de7eed91cb56a768915767f49b99f"
+    },
+    "sprint-status": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/sprint-status/SKILL.md",
+      "computedHash": "429149aaaba591645cda373768c8af09eb81661fead5d88aa69898b8b0d72633"
+    },
+    "start": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/start/SKILL.md",
+      "computedHash": "71d5c70b24bd8d8e6bd2874cfd0565d16fffcb48f03adc2ff79c0588fb7231a0"
+    },
+    "stop-motion-craft-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/stop-motion-craft-style/SKILL.md",
+      "computedHash": "ae9b741cb59ba43f112810f05e6d78e2da755cf922dace68eaf25f2959577a02"
+    },
+    "story-done": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/story-done/SKILL.md",
+      "computedHash": "3a56a04e54f440db43c5c380cfdbfac90579dad6fbffb9804194bea11fbb0bfa"
+    },
+    "story-readiness": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/story-readiness/SKILL.md",
+      "computedHash": "ec24e953e55f81b76093deddd3433b69cc32f48d2ec00e8ae9186a1b2001cfd9"
+    },
+    "stylized-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/stylized-style/SKILL.md",
+      "computedHash": "50652c0a2ebe67d89652f72e5e4e6080d78b1d08ce255936350c78fd8b0582eb"
+    },
+    "team-audio": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-audio/SKILL.md",
+      "computedHash": "a06a4f0ef1f823916f4805c0d17b6c3e3492f7ebd0b82efb8c261570577d5ef2"
+    },
+    "team-combat": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-combat/SKILL.md",
+      "computedHash": "55d0638ecd6e24177cf3fb6baaadb3a1bf8a3111067e16a3ec6088e20f594a5d"
+    },
+    "team-level": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-level/SKILL.md",
+      "computedHash": "6f2e7a8e220b5b9411eb5c5f670a5138007dcf1f46ddf295703def51ac0db159"
+    },
+    "team-live-ops": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-live-ops/SKILL.md",
+      "computedHash": "748f624e9e7ca2c21ad689876dfe565871b8b230b4f0d49ab77864c22816a28c"
+    },
+    "team-narrative": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-narrative/SKILL.md",
+      "computedHash": "1f840a0591b422493ef0d94eb4e3bc3d4fa6afa400cbb62a8eeff8409165b641"
+    },
+    "team-polish": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-polish/SKILL.md",
+      "computedHash": "f0d58d4e177a3fd7ba08c40e483916c9a003fe61dfeb2baf69144445dc17eec4"
+    },
+    "team-qa": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-qa/SKILL.md",
+      "computedHash": "69db5e9e940412d44c55f706be6ecbe189bfb5e05dad445ddee7ecfb797c74a9"
+    },
+    "team-release": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-release/SKILL.md",
+      "computedHash": "ff81969e4ee38d4ed0b98707ec88041f9c14f8b79ebe08ecb2a83aed2b3e6d30"
+    },
+    "team-ui": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/team-ui/SKILL.md",
+      "computedHash": "cb4d54afc5c6c4a88e9c9f7f1dfba1930a42361f32da806b87e5ec8c863b36f7"
+    },
+    "tech-debt": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/tech-debt/SKILL.md",
+      "computedHash": "3aca6a575d3d1f7713952a9774c4f3e15ff5ed6bde044373a7ff8bdcd8d68075"
+    },
+    "test-evidence-review": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/test-evidence-review/SKILL.md",
+      "computedHash": "598de176b7b13454737a30868e5cef5b455e095c93c5a08b871ed940550f813a"
+    },
+    "test-flakiness": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/test-flakiness/SKILL.md",
+      "computedHash": "17db300c83ca5f5fab363d7fb99793a653f7ea4371f7f88e2ad8329280e6a001"
+    },
+    "test-helpers": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/test-helpers/SKILL.md",
+      "computedHash": "1a8554d113a2992b4b6b8a84a9de073748896eaf0daa12de0b45967185395104"
+    },
+    "test-setup": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/test-setup/SKILL.md",
+      "computedHash": "b45db955a70d9653d6854005900c4feab95ae78ef35e51d6d421359846a70153"
+    },
+    "texture-workflow": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/texture-workflow/SKILL.md",
+      "computedHash": "fd84bd343b7fb6a3d738414ebe492dd790820c3cfad381212fd435f4454f2500"
+    },
+    "threejs-gltf-loading": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/web-engines/threejs-gltf-loading/SKILL.md",
+      "computedHash": "62f37032641f7d504b63f43a4b2fbf7a7ef37009461086049c927bd8bfc65c0c"
+    },
+    "threejs-materials-lighting": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/web-engines/threejs-materials-lighting/SKILL.md",
+      "computedHash": "c9e551ce59c90c4a788c5d848151f28539342b1e4df35e0921c2641dd6088221"
+    },
+    "threejs-scene": {
+      "source": "Moh4696/open-3d-skills",
+      "commit": "53beb899e77f65d50160a3765f36f5ddb8b3c19b",
+      "sourceType": "github",
+      "skillPath": "skills/threejs-scene/SKILL.md",
+      "computedHash": "a58bb8062356c2b7e96bb1e69d4b49fa3073dcebf6859928c41190cce472b758"
+    },
+    "threejs-scene-setup": {
+      "source": "gamedev-skills/awesome-gamedev-agent-skills",
+      "commit": "c6ca6c41c839b68319ffc08430b99ab768debc32",
+      "sourceType": "github",
+      "skillPath": "skills/web-engines/threejs-scene-setup/SKILL.md",
+      "computedHash": "4a8c3ecad9eaa8d55ca2436c29085960c439a547082ba8586c1e73a528338cb2"
+    },
+    "unity-export": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/unity-export/SKILL.md",
+      "computedHash": "478d8365508bd6194442aa50ba9e76b55e57392ffba8905ae5c1bd3af58299c5"
+    },
+    "unreal-export": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/unreal-export/SKILL.md",
+      "computedHash": "04904da6e3032e867396d187ce8c8bf40b4be398e70cd14d1ef65148c2659e85"
+    },
+    "uv-workflow": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/uv-workflow/SKILL.md",
+      "computedHash": "a0500863c3facece670c80883cff314332ae187e0ca040eae0e918fd457e91ca"
+    },
+    "ux-design": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ux-design/SKILL.md",
+      "computedHash": "a7aa0ced015b9c686620aef2f56ac51b61be5b5a7b85d242f1d55eaf178756c7"
+    },
+    "ux-review": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ux-review/SKILL.md",
+      "computedHash": "856f4f74aee24856375c9333fa831c9474ce5a2db18fd0bd4b0592bdf74ecb7f"
+    },
+    "vector-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/vector-style/SKILL.md",
+      "computedHash": "2834a746577742aea0c3c996d56c2029bc9f2fa96e82fa80648c76954c063f4c"
+    },
+    "vegetation-artist": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/vegetation-artist/SKILL.md",
+      "computedHash": "a8e13014ecf5b64639ace2f2df0cb0ee4b77e6f7844f359838cbe22e7a725111"
+    },
+    "vehicle-artist": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/vehicle-artist/SKILL.md",
+      "computedHash": "4277dda8e2d9991afda4298c505b6768d4b6559cfdff3f61cd0a64b4fcc14feb"
+    },
+    "vertical-slice": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/vertical-slice/SKILL.md",
+      "computedHash": "92d675470d4320bcb7af01ebb399458a29a810dcbd036043b6c6344f85ae8995"
+    },
+    "vfx-fx": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/vfx-fx/SKILL.md",
+      "computedHash": "0f153aa7bdd2f740628f0199de0f263ed036b74bffed5ad483795030cc650b84"
+    },
+    "video2dsprite": {
+      "source": "0x0funky/agent-sprite-forge",
+      "commit": "25203d03900b46b444bdd72a75768c33d1895ad6",
+      "sourceType": "github",
+      "skillPath": "skills/video2dsprite/SKILL.md",
+      "computedHash": "f88b7dde26f306d3ad3ee3af2ff13ea97c29bba5aafcca52f168c43ba3206976"
+    },
+    "visual-console-eras": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/visual-console-eras/SKILL.md",
+      "computedHash": "a6fd3c9a799f2edf82fa349b1126ec2f3cff1434966d48ab6f8b31d014bff15b"
+    },
+    "voxel-style": {
+      "source": "arjun988/blender-skills",
+      "commit": "904f095d8f36a6e72adaebb08d07f884a074743d",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/voxel-style/SKILL.md",
+      "computedHash": "51b6abc940021ccd42ab2b98f68b3d077c4145f5da7df36dd4b0c4b7cbe924a4"
+    },
+    "write-changelog": {
+      "source": "Donchitos/Claude-Code-Game-Studios",
+      "commit": "abc0de79d6ceb0b5d7aa693945849b3937afbe6a",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/write-changelog/SKILL.md",
+      "computedHash": "14da4187f312b66b6f2fe0eea41ddad37a02aed643e9322e956f8f71aa377ad6"
+    }
+  }
+}

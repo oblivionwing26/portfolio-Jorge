@@ -1,0 +1,52 @@
+{
+  "family": "hydrangea",
+  "version": "1.0.0",
+  "dimensions": [
+    1.1820217967033386,
+    1.1353964805603027,
+    1.1785238981246948
+  ],
+  "anchors": {
+    "ground": [
+      0,
+      0,
+      0
+    ],
+    "top": [
+      0,
+      1.1353964805603027,
+      0
+    ]
+  },
+  "geometry": {
+    "errors": [],
+    "parts": 23,
+    "triangles": 2708,
+    "vertices": 8124,
+    "bounds": {
+      "min": [
+        -0.6009238958358765,
+        0,
+        -0.6256335973739624
+      ],
+      "max": [
+        0.5810979008674622,
+        1.1353964805603027,
+        0.5528903007507324
+      ]
+    }
+  },
+  "glbSha256": "7bf1bb379a85aa2796b65664246e41ba3fa8e3a228a1859971bcad40ce0a5476",
+  "formats": {},
+  "controls": "asset.controls.json",
+  "toolkit": {
+    "recipe": "bench",
+    "recipeVersion": "1.1.0",
+    "deliveryRevision": 4,
+    "sha256": "da63ef6e143b9c75d64efa2fb0d1ef61e1972a8fe4708c1dae21b1c0097610dd",
+    "sourceHash": "6aa0892764ae32e723fa2f58ae044b051f4de57b22dbab6bb49ce2342412459c"
+  },
+  "limits": [
+    "Geometry/export evidence only; inspect actual views and verify the requested target separately."
+  ]
+}

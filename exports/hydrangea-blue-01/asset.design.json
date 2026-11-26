@@ -1,0 +1,22 @@
+{
+  "formatVersion": 1,
+  "family": "hydrangea",
+  "familyVersion": "1.0.0",
+  "requested": {
+    "colorway": "blue",
+    "width": 1.4,
+    "height": 1.1
+  },
+  "applied": {
+    "width": 1.4,
+    "height": 1.1,
+    "mounds": 6,
+    "flowers": 16,
+    "seed": 21,
+    "colorway": "blue",
+    "color.foliage": "#4f8a4a",
+    "color.shade": "#33643a",
+    "color.accent": "#7f9be6",
+    "color.ground": "#5a4532"
+  }
+}

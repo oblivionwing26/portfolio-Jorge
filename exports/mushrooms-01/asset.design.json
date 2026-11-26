@@ -1,0 +1,22 @@
+{
+  "formatVersion": 1,
+  "family": "mushroom-cluster",
+  "familyVersion": "2.0.0",
+  "requested": {
+    "count": 6
+  },
+  "applied": {
+    "count": 6,
+    "height": 0.35,
+    "capStyle": "dome",
+    "capWidth": 0.75,
+    "spots": true,
+    "lean": 0.15,
+    "seed": 7,
+    "colorway": "toadstool",
+    "color.cap": "#c8352b",
+    "color.spots": "#f4efe2",
+    "color.stem": "#ece4d0",
+    "color.ground": "#4d6b3a"
+  }
+}

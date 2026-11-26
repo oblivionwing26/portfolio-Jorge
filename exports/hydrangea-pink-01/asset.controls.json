@@ -1,0 +1,379 @@
+{
+  "formatVersion": 1,
+  "kind": "polyspoon.model-controls",
+  "title": "Hydrangea",
+  "family": "hydrangea",
+  "familyVersion": "1.0.0",
+  "recipeVersion": "1.0.0",
+  "units": {
+    "length": "m",
+    "up": "+Y",
+    "handedness": "right"
+  },
+  "parameters": [
+    {
+      "key": "width",
+      "label": "Width",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.6,
+      "max": 2.4,
+      "step": 0.05,
+      "default": 1.3,
+      "hint": "Spread of the bush.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "leaves",
+        "flowers"
+      ],
+      "unit": "m",
+      "inputUnit": "m",
+      "displayUnit": "m",
+      "value": 1.2
+    },
+    {
+      "key": "height",
+      "label": "Height",
+      "kind": "range",
+      "group": "shape",
+      "min": 0.5,
+      "max": 2,
+      "step": 0.05,
+      "default": 1.1,
+      "hint": "Height of the bush.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "leaves",
+        "flowers"
+      ],
+      "unit": "m",
+      "inputUnit": "m",
+      "displayUnit": "m",
+      "value": 1
+    },
+    {
+      "key": "mounds",
+      "label": "Leaf mounds",
+      "kind": "integer",
+      "group": "construction",
+      "min": 3,
+      "max": 9,
+      "step": 1,
+      "default": 6,
+      "hint": "Overlapping leaf masses.",
+      "affects": [
+        "topology"
+      ],
+      "targets": [
+        "leaves"
+      ],
+      "unit": "count",
+      "inputUnit": "integer",
+      "displayUnit": "count",
+      "value": 6
+    },
+    {
+      "key": "flowers",
+      "label": "Flower heads",
+      "kind": "integer",
+      "group": "construction",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 16,
+      "hint": "Round flower clusters on the outside.",
+      "affects": [
+        "topology"
+      ],
+      "targets": [
+        "flowers"
+      ],
+      "unit": "count",
+      "inputUnit": "integer",
+      "displayUnit": "count",
+      "value": 16
+    },
+    {
+      "key": "seed",
+      "label": "Variation seed",
+      "kind": "integer",
+      "group": "construction",
+      "min": 0,
+      "max": 65535,
+      "step": 1,
+      "default": 21,
+      "hint": "Repeatable layout and facets.",
+      "affects": [
+        "geometry"
+      ],
+      "targets": [
+        "leaves",
+        "flowers"
+      ],
+      "unit": "seed",
+      "inputUnit": "integer",
+      "displayUnit": "seed",
+      "value": 77
+    },
+    {
+      "key": "colorway",
+      "label": "Palette",
+      "kind": "choice",
+      "group": "colors",
+      "default": "blue",
+      "options": [
+        {
+          "value": "blue",
+          "label": "Blue"
+        },
+        {
+          "value": "pink",
+          "label": "Pink"
+        },
+        {
+          "value": "white",
+          "label": "White"
+        }
+      ],
+      "hint": "Flower and leaf colors.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "leaves",
+        "flowers"
+      ],
+      "unit": "none",
+      "inputUnit": "none",
+      "displayUnit": "none",
+      "value": "pink"
+    },
+    {
+      "key": "color.foliage",
+      "label": "Leaves",
+      "kind": "color",
+      "group": "colors",
+      "default": "#4f8a4a",
+      "role": "leaves",
+      "hint": "Upper leaf color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "leaves"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#4f8a4a"
+    },
+    {
+      "key": "color.shade",
+      "label": "Shaded leaves",
+      "kind": "color",
+      "group": "colors",
+      "default": "#33643a",
+      "role": "shade",
+      "hint": "Lower leaf color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "shade"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#33643a"
+    },
+    {
+      "key": "color.accent",
+      "label": "Flowers",
+      "kind": "color",
+      "group": "colors",
+      "default": "#7f9be6",
+      "role": "flowers",
+      "hint": "Flower head color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "flowers"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#e58fb4"
+    },
+    {
+      "key": "color.ground",
+      "label": "Soil",
+      "kind": "color",
+      "group": "colors",
+      "default": "#5a4532",
+      "role": "ground",
+      "hint": "Soil mound color.",
+      "affects": [
+        "material"
+      ],
+      "targets": [
+        "ground"
+      ],
+      "unit": "color",
+      "inputUnit": "color",
+      "displayUnit": "color",
+      "value": "#5a4532"
+    }
+  ],
+  "applied": {
+    "width": 1.2,
+    "height": 1,
+    "mounds": 6,
+    "flowers": 16,
+    "seed": 77,
+    "colorway": "pink",
+    "color.foliage": "#4f8a4a",
+    "color.shade": "#33643a",
+    "color.accent": "#e58fb4",
+    "color.ground": "#5a4532"
+  },
+  "appearance": null,
+  "presets": [
+    {
+      "id": "blue",
+      "name": "Blue hydrangea",
+      "description": "Round green bush with blue flower heads.",
+      "parameters": {}
+    },
+    {
+      "id": "pink",
+      "name": "Pink hydrangea",
+      "description": "Wide pink bush with many heads.",
+      "parameters": {
+        "colorway": "pink",
+        "width": 1.6,
+        "height": 1.05,
+        "mounds": 7,
+        "flowers": 22,
+        "seed": 5
+      }
+    },
+    {
+      "id": "white",
+      "name": "White hydrangea",
+      "description": "Tall white bush.",
+      "parameters": {
+        "colorway": "white",
+        "width": 1.25,
+        "height": 1.2,
+        "mounds": 6,
+        "flowers": 14,
+        "seed": 88
+      }
+    }
+  ],
+  "palettes": [
+    {
+      "id": "blue",
+      "label": "Blue",
+      "colors": [
+        "#4f8a4a",
+        "#7f9be6"
+      ]
+    },
+    {
+      "id": "pink",
+      "label": "Pink",
+      "colors": [
+        "#4f8a4a",
+        "#e58fb4"
+      ]
+    },
+    {
+      "id": "white",
+      "label": "White",
+      "colors": [
+        "#4a8246",
+        "#eeeadb"
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "ground",
+      "baseColor": [
+        0.10224173307914941,
+        0.059511238155621766,
+        0.031896033067374104,
+        1
+      ],
+      "hex": "#5a4532",
+      "metallic": 0,
+      "roughness": 0.92
+    },
+    {
+      "name": "leaves",
+      "baseColor": [
+        0.0781874217970207,
+        0.2541520943200296,
+        0.06847816983662762,
+        1
+      ],
+      "hex": "#4f8a4a",
+      "metallic": 0,
+      "roughness": 0.92
+    },
+    {
+      "name": "shade",
+      "baseColor": [
+        0.033104766565152086,
+        0.12743768042608497,
+        0.04231141061442144,
+        1
+      ],
+      "hex": "#33643a",
+      "metallic": 0,
+      "roughness": 0.92
+    },
+    {
+      "name": "flowers",
+      "baseColor": [
+        0.783537791521566,
+        0.2746773120495699,
+        0.45641102317066595,
+        1
+      ],
+      "hex": "#e58fb4",
+      "metallic": 0,
+      "roughness": 0.92
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.476534903049469,
+      0,
+      -0.49113568663597107
+    ],
+    "max": [
+      0.5006123781204224,
+      1.002415657043457,
+      0.5033138990402222
+    ],
+    "dimensions": [
+      0.9771472811698914,
+      1.002415657043457,
+      0.9944495856761932
+    ]
+  },
+  "formats": [
+    "glb",
+    "obj",
+    "fbx",
+    "usdz"
+  ],
+  "note": "Change parameters in the Polyspoon editor or with the agent toolkit, then export again; downloaded meshes are static snapshots."
+}
